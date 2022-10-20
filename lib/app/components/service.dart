@@ -12,7 +12,7 @@ class Service extends StatelessWidget {
       height: 100,
       decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          color: AppColor.primaryColor100),
+          color: AppColor.primaryColor),
       child: const Icon(CupertinoIcons.envelope_open, size: 20,),
     );
 

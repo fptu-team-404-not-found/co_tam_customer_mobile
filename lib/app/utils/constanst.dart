@@ -5,7 +5,7 @@ class UIConstant {
 }
 
 class AppColor {
-  static const Color primaryColor100 = Color(0xFF15BF81);
+  static const Color primaryColor = Color(0xFF15BF81);
   static const Color primaryColor50 = Color(0x8015BF81);
   static const Color primaryColor30 = Color(0x4D15BF81);
   static const Color primaryColor10 = Color(0x1A15BF81);
@@ -17,6 +17,9 @@ class AppColor {
   static const Color subColor50 = Color(0x80000000);
   static const Color subColor30 = Color(0x4D000000);
   static const Color subColor10 = Color(0x1A000000);
+}
+class AppFont {
+
 }
 
 class AppResource {

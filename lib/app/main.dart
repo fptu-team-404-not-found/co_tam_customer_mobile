@@ -1,4 +1,4 @@
-import 'package:co_tam_customer_mobile/app/modules/home_screen.dart';
+import 'package:co_tam_customer_mobile/app/modules/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 
