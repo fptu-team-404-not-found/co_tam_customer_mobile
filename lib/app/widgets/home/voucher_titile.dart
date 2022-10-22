@@ -1,6 +1,8 @@
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:flutter/material.dart';
 
+import '../../utils/routes.dart';
+
 class VoucherTitle extends StatelessWidget {
   const VoucherTitle({Key? key}) : super(key: key);
 
@@ -12,15 +14,15 @@ class VoucherTitle extends StatelessWidget {
         decoration:  const BoxDecoration(
             border: Border(
                 bottom: BorderSide(
-                  color: AppColor.primaryColor,
+                  color: AppColor.primaryColor100,
                   width: 1,
                 )
             )
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Padding(
+          children: [
+            const Padding(
               padding: EdgeInsets.only(left: 5, bottom: 8),
               child: Text(
                 'Ưu đãi',
@@ -32,13 +34,18 @@ class VoucherTitle extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 7),
-              child: Text(
-                'Xem thêm',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 12,
-                  color: Colors.grey,
+              padding: const EdgeInsets.only(right: 7),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, Routes.mainScreen2);
+                },
+                child: const Text(
+                  "Xem thêm",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
+                    color: Colors.grey,
+                    ),
                 ),
               ),
             ),

@@ -1,7 +1,11 @@
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:flutter/material.dart';
 
+import '../../utils/routes.dart';
+
 class HomeHead extends StatelessWidget {
+
+
   const HomeHead({Key? key}) : super(key: key);
 
   @override
@@ -12,46 +16,56 @@ class HomeHead extends StatelessWidget {
           children: [
             Container(
               width: double.infinity,//max ngang
-              height: 157,
+              height: 170,
               decoration: const BoxDecoration(
-                  color: AppColor.primaryColor
+                  color: AppColor.primaryColor100
               ),
               child: Stack(
                 children: [
                   Positioned(
-                      top: 48,
+                      top: 60,
                       left: 330,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(7),
-                        child:  const SizedBox(
+                        child: SizedBox(
                           height: 40,
                           width: 40,
-                          child:  Icon(
-                            Icons.notifications,
-                            size: 25,
-                            color: Colors.white,
+                          child: IconButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, Routes.notificationScreen);
+                            },
+                            icon: const Icon(
+                              Icons.notifications,
+                              size: 25,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       )
                   ),
                   Positioned(
-                      top: 48,
+                      top: 60,
                       left: 285,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(7),
-                        child:  const SizedBox(
+                        child: SizedBox(
                           height: 40,
                           width: 40,
-                          child:  Icon(
-                            Icons.account_balance_wallet,
-                            size: 25,
-                            color: Colors.white,
+                          child:  IconButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, Routes.walletScreen);
+                            },
+                            icon: const Icon(
+                              Icons.account_balance_wallet,
+                              size: 25,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       )
                   ),
                   Padding(
-                      padding: const EdgeInsets.only(top: 42, left: 20),
+                      padding: const EdgeInsets.only(top: 60, left: 20),
                       child:  Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
@@ -78,7 +92,7 @@ class HomeHead extends StatelessWidget {
           ],
         ),
         Positioned(
-            top: 100,
+            top: 110,
             left: 12,
             child: SizedBox(
               width: 360,

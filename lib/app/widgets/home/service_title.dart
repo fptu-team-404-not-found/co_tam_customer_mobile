@@ -12,7 +12,7 @@ class ServiceTitle extends StatelessWidget {
         decoration:  const BoxDecoration(
             border: Border(
                 bottom: BorderSide(
-                  color: AppColor.primaryColor,
+                  color: AppColor.primaryColor100,
                   width: 1,
                 )
             )

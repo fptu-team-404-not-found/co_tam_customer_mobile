@@ -1,22 +1,29 @@
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ServiceIcon extends StatelessWidget {
-  final double size;
-  final double iconSize;
+  final double? size;
   final String? title;
-  final IconData icon;
-  const ServiceIcon({super.key, required this.size, required this.iconSize, this.title, required this.icon});
+  final Image icon;
+  final Function? actionFunction;
+
+  const ServiceIcon({super.key, this.size, this.title, required this.icon, this.actionFunction});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: AppColor.primaryColor100),
-      child:  Icon(icon , size: iconSize,),
-    );
+    return
+      Container(
+        width: size,
+        height: size,
+        decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColor.primaryColor100),
+        child: IconButton(
+          onPressed: () {
+            actionFunction!();
+          },
+          icon: icon,
+        ),
+      );
   }
 }
