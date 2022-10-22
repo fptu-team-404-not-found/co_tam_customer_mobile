@@ -1,9 +1,9 @@
-import 'package:co_tam_customer_mobile/app/modules/home/widget/home_head.dart';
-import 'package:co_tam_customer_mobile/app/modules/home/widget/service_title.dart';
-import 'package:co_tam_customer_mobile/app/modules/home/widget/voucher_titile.dart';
-import 'package:flutter/material.dart';
 
-import '../../utils/constanst.dart';
+import 'package:co_tam_customer_mobile/app/widgets/home/home_head.dart';
+import 'package:co_tam_customer_mobile/app/widgets/home/service_icon_list.dart';
+import 'package:co_tam_customer_mobile/app/widgets/home/service_title.dart';
+import 'package:co_tam_customer_mobile/app/widgets/home/voucher_titile.dart';
+import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -23,20 +23,18 @@ class HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-        body: SafeArea(
+    return SafeArea(
           child: CustomScrollView(
             slivers: <Widget>[
               const SliverToBoxAdapter(
                 child: SizedBox(height: 230, child: HomeHead()),
               ),
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child:ServiceTitle(),
               ),
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: VoucherTitle(),
               ),
-
              SliverList(delegate:  SliverChildListDelegate(
                imgList
                    .map((e) => Padding(
@@ -47,7 +45,6 @@ class HomeScreenState extends State<HomeScreen> {
               )
             ],
           ),
-        )
-    );
+        );
   }
 }
