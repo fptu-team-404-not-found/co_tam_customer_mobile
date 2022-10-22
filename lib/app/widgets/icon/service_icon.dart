@@ -15,7 +15,7 @@ class ServiceIcon extends StatelessWidget {
       height: size,
       decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          color: AppColor.primaryColor),
+          color: AppColor.primaryColor100),
       child:  Icon(icon , size: iconSize,),
     );
   }
