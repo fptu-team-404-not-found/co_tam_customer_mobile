@@ -1,4 +1,5 @@
 import 'package:co_tam_customer_mobile/app/pages/booking/booking_main_screen.dart';
+import 'package:co_tam_customer_mobile/app/pages/booking/test.dart';
 import 'package:co_tam_customer_mobile/app/pages/notification/notification_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,8 @@ class Router {
       case 'NotificationScreen':
         return MaterialPageRoute(builder: (_) => const NotificationScreen());
       case 'MainBookingScreen':
-        return MaterialPageRoute(builder: (_) => const BookingMainScreen());
+        final title = settings.arguments as TestTitle;
+        return MaterialPageRoute(builder: (_) => BookingMainScreen(title: title));
       case 'VoucherMainScreen':
         return MaterialPageRoute(builder: (_) => const VoucherMainScreen());
       case 'VoucherDetailScreen':
