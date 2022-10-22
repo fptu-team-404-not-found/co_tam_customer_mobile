@@ -7,15 +7,15 @@ import '../../widgets/appbar/top_app_bar.dart';
 import '../../widgets/button/login_button.dart';
 import 'login_controller.dart';
 
-class LoginPage extends View {
-  const LoginPage({super.key});
+class LoginScreen extends View {
+  const LoginScreen({super.key});
 
   @override
-  State<StatefulWidget> createState() => LoginPageView();
+  State<StatefulWidget> createState() => LoginScreenView();
 }
 
-class LoginPageView extends ViewState<LoginPage, LoginController> {
-  LoginPageView() : super(LoginController());
+class LoginScreenView extends ViewState<LoginScreen, LoginController> {
+  LoginScreenView() : super(LoginController());
 
   @override
   Widget get view => Scaffold(

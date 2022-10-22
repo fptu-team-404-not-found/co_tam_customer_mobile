@@ -65,7 +65,7 @@ class TabControllerWidgetState extends State<TabControllerWidget>
                   tabs: _tabs,
                   controller: tabController,
                   unselectedLabelColor: AppColor.subColor100,
-                  labelColor: AppColor.primaryColor,
+                  labelColor: AppColor.primaryColor100,
                   indicatorWeight: 2,
                   indicatorColor: AppColor.primaryColor30
               )

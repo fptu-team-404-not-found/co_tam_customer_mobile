@@ -1,25 +1,27 @@
 import 'package:co_tam_customer_mobile/app/pages/account/account_main.dart';
 import 'package:co_tam_customer_mobile/app/pages/home/home_screen.dart';
 import 'package:co_tam_customer_mobile/app/pages/order/order_main.dart';
-import 'package:co_tam_customer_mobile/app/pages/vouchers/voucher_main.dart';
+import 'package:co_tam_customer_mobile/app/pages/vouchers/voucher_main_screen.dart';
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 //This class is use to điều khiền cái màn hình bằng cái bottom nav bar
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  final int selectedInit;
+
+  const MainScreen({Key? key, required this.selectedInit}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 0;
+  late int _selectedIndex = widget.selectedInit;
   static const List<Widget> _pages = <Widget>[
     HomeScreen(),
     OrderMain(),
-    VoucherMain(),
+    VoucherMainScreen(),
     AccountMain(),
   ];
   @override
@@ -30,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
         child:  GNav(
           gap: 7,
           tabBackgroundColor: AppColor.primaryColor30,
-          activeColor: AppColor.primaryColor,
+          activeColor: AppColor.primaryColor100,
           padding: const EdgeInsets.all(15),
           selectedIndex: _selectedIndex,
           tabs:  const [

@@ -1,4 +1,6 @@
-import 'package:co_tam_customer_mobile/app/pages/main/main_screen.dart';
+import 'package:co_tam_customer_mobile/app/pages/login/login_screen.dart';
+import 'package:co_tam_customer_mobile/app/utils/routes.dart';
+import 'package:co_tam_customer_mobile/app/utils/router.dart' as router;
 import 'package:flutter/material.dart';
 
 
@@ -22,7 +24,9 @@ class _MyAppState extends State<MyApp> {
     return const MaterialApp(
           title: "Cô Tấm",
           debugShowCheckedModeBanner: false,
-          home: MainScreen()
+          home: LoginScreen(),
+          initialRoute: Routes.loginScreen,
+          onGenerateRoute: router.Router.generateRoute,
         );
   }
 }

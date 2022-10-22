@@ -10,7 +10,7 @@ class OrderRatingPage extends StatefulWidget {
 class _OrderRatingPageState extends State<OrderRatingPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Đánh giá'),
     );
   }

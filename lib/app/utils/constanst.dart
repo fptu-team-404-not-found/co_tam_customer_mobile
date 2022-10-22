@@ -5,7 +5,7 @@ class UIConstant {
 }
 
 class AppColor {
-  static const Color primaryColor = Color(0xFF15BF81);
+  static const Color primaryColor100 = Color(0xFF15BF81);
   static const Color primaryColor50 = Color(0x8015BF81);
   static const Color primaryColor30 = Color(0x4D15BF81);
   static const Color primaryColor10 = Color(0x1A15BF81);
@@ -18,9 +18,6 @@ class AppColor {
   static const Color subColor30 = Color(0x4D000000);
   static const Color subColor10 = Color(0x1A000000);
 }
-class AppFont {
-
-}
 
 class AppResource {
   static const String logo = 'assets/img/logo.png';
@@ -28,4 +25,27 @@ class AppResource {
 
 class AppString {
   static const String loginSuccessfull = 'Đăng nhập thành công';
+}
+
+class AppText {
+  static const headingLarge = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 26,
+      fontStyle: FontStyle.normal,
+      color: AppColor.primaryColor100);
+  static const headingSmall = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 18,
+      fontStyle: FontStyle.normal,
+      color: AppColor.primaryColor100);
+  static const text = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+      fontStyle: FontStyle.normal,
+      color: AppColor.primaryColor100);
+  static const textBlack = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+      fontStyle: FontStyle.normal,
+      color: AppColor.subColor100);
 }

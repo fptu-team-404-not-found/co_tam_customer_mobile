@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/appbar/tab_controller.dart';
@@ -9,8 +8,8 @@ class OrderMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-        appBar: const PreferredSize(preferredSize: Size.fromHeight(56), child: TopAppBar('ĐƠN HÀNG', null, null)),
+    return const Scaffold(
+        appBar: PreferredSize(preferredSize: Size.fromHeight(56), child: TopAppBar('ĐƠN HÀNG', null, null, null)),
         body: TabControllerWidget()
     );
   }
