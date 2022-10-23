@@ -14,15 +14,6 @@ class HomeScreen extends StatefulWidget {
   }
 
 class HomeScreenState extends State<HomeScreen> {
-  List imgList = [
-    Image.asset('assets/img/voucher.png'),
-    Image.asset('assets/img/voucher2.png'),
-    Image.asset('assets/img/voucher3.png'),
-    Image.asset('assets/img/voucher.png'),
-    Image.asset('assets/img/voucher2.png'),
-  ];
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
