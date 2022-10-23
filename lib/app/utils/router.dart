@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import '../pages/login/login_screen.dart';
 import '../pages/main/main_screen.dart';
 
+import '../pages/order_detail/order_detail_booking_screen.dart';
+import '../pages/order_detail/order_detail_history_screen.dart';
+import '../pages/order_detail/order_detail_rating_screen.dart';
 import '../pages/vouchers/voucher_detail_screen.dart';
 import '../pages/vouchers/voucher_main_screen.dart';
 import '../pages/wallet/wallet_screen.dart';
@@ -30,6 +33,12 @@ class Router {
         return MaterialPageRoute(builder: (_) => const VoucherDetailScreen());
       case 'WalletScreen':
         return MaterialPageRoute(builder: (_) => const WalletScreen());
+      case 'OrderDetailBookingScreen':
+        return MaterialPageRoute(builder: (_) => const OrderDetailBookingScreen());
+      case 'OrderDetailRatingScreen':
+        return MaterialPageRoute(builder: (_) => const OrderDetailRatingScreen());
+      case 'OrderDetailHistoryScreen':
+        return MaterialPageRoute(builder: (_) => const OrderDetailHistoryScreen());
 
       default:
         return MaterialPageRoute(builder: (_) {

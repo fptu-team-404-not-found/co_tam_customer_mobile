@@ -13,7 +13,7 @@ class OrderRatingTagButton extends StatelessWidget {
       width: 80,
       child: ElevatedButton(
         onPressed: () {
-          //Cần chuyển tới trang order rating detail của order đó!!!
+          Navigator.pushNamed(context, Routes.orderDetailRatingScreen);
         },
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all(AppColor.primaryColor100),
