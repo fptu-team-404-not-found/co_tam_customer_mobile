@@ -69,14 +69,14 @@ class HomeHead extends StatelessWidget {
                       child:  Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
-                          Text('Cô Tấm chào bạn,',
+                          Text('Cô Tấm dell chào bạn,',
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 224, 223, 233),
                             ),
                           ),
-                          Text('Trần Văn Ba',
+                          Text('Nguyễn Đào Đức Quân',
                             style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w600,

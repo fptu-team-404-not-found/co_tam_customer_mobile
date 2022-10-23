@@ -1,9 +1,9 @@
-import 'package:co_tam_customer_mobile/app/pages/order/order_receiving.dart';
+import 'package:co_tam_customer_mobile/app/pages/order/order_booking_screen.dart';
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:flutter/material.dart';
 
-import '../../pages/order/order_history.dart';
-import '../../pages/order/order_rating.dart';
+import '../../pages/order/order_history_screen.dart';
+import '../../pages/order/order_rating_screen.dart';
 
 
 class TabControllerWidget extends StatefulWidget {
@@ -78,9 +78,9 @@ class TabControllerWidgetState extends State<TabControllerWidget>
         child: TabBarView(
           controller: tabController,
           children:  const [
-             OrderReceivingPage(),
-             OrderRatingPage(),
-             OrderHistoryPage(),
+             OrderBookingScreen(),
+             OrderRatingScreen(),
+             OrderHistoryScreen(),
           ],
         ),
       )

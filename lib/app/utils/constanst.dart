@@ -38,6 +38,11 @@ class AppText {
       fontSize: 18,
       fontStyle: FontStyle.normal,
       color: AppColor.primaryColor100);
+  static const headingSmall2 = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontSize: 13,
+      fontStyle: FontStyle.normal,
+      color: AppColor.primaryColor100);
   static const text = TextStyle(
       fontWeight: FontWeight.w400,
       fontSize: 12,
@@ -48,4 +53,24 @@ class AppText {
       fontSize: 12,
       fontStyle: FontStyle.normal,
       color: AppColor.subColor100);
+  static const textBlack2 = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 14,
+      fontStyle: FontStyle.normal,
+      color: AppColor.subColor100);
+  static const textGrey = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+      fontStyle: FontStyle.normal,
+      color: Colors.grey);
+  static const textGrey2 = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+      fontStyle: FontStyle.italic,
+      color: Colors.grey);
+  static const textWhite1 = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+      fontStyle: FontStyle.normal,
+      color: Colors.white);
 }
