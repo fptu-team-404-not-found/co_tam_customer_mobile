@@ -29,7 +29,7 @@ class ServiceIconList extends StatelessWidget {
         const SizedBox(width: 11),
         Column(
           children: [
-            ServiceIcon(title: 'Khử trùng', size:80, icon: const Image(image: AssetImage('assets/img/service_icons/shield.png')), actionFunction: () => {Navigator.pushNamed(context, Routes.mainBookingScreen, arguments: TestTitle('Khử Trùng Nhà'))}),
+            ServiceIcon(title: 'Khử trùng', size:80, icon:  const Image(image: AssetImage('assets/img/service_icons/shield.png')), actionFunction: () => {Navigator.pushNamed(context, Routes.mainBookingScreen, arguments: TestTitle('Khử Trùng Nhà'))}),
             const SizedBox(height: 11),
             const Text('Khử trùng', style: AppText.textBlack),
           ],

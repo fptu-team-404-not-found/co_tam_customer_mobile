@@ -48,6 +48,8 @@ class AppText {
       fontSize: 12,
       fontStyle: FontStyle.normal,
       color: AppColor.primaryColor100);
+
+
   static const textBlack = TextStyle(
       fontWeight: FontWeight.w400,
       fontSize: 12,
@@ -58,6 +60,13 @@ class AppText {
       fontSize: 14,
       fontStyle: FontStyle.normal,
       color: AppColor.subColor100);
+  static const textBlack3 = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontSize: 16,
+      fontStyle: FontStyle.normal,
+      color: AppColor.subColor100);
+
+
   static const textGrey = TextStyle(
       fontWeight: FontWeight.w400,
       fontSize: 12,
@@ -68,6 +77,8 @@ class AppText {
       fontSize: 12,
       fontStyle: FontStyle.italic,
       color: Colors.grey);
+
+
   static const textWhite1 = TextStyle(
       fontWeight: FontWeight.w400,
       fontSize: 12,
