@@ -15,6 +15,7 @@ class TopAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          elevation: 0.0,
           leading: IconButton(onPressed: () {
             if (leadingIcon != null) {
               Navigator.pop(context);
