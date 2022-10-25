@@ -34,7 +34,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           child: ListView.builder(
             itemCount: 50,
             itemBuilder: (BuildContext context, int index) {
-              return const NotificationTag(iconData: FontAwesomeIcons.info, mainInfo: 'Dọn dẹp vệ sinh nhà cửa', subInfo: 'Xác nhận đơn thành công', extraInfo: '21-10-2022');
+              return const NotificationTag(iconData: FontAwesomeIcons.info, mainInfo: 'Dọn dẹp vệ sinh nhà cửa', subInfo: 'Xác nhận đơn thành công', extraInfo: '21-10-2022, 23:00 - 24:00');
             },
           ),
         ),

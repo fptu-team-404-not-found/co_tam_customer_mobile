@@ -9,7 +9,7 @@ class OrderMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        appBar: PreferredSize(preferredSize: Size.fromHeight(56), child: TopAppBar('ĐƠN HÀNG', null, null, null)),
+        appBar: PreferredSize(preferredSize: Size.fromHeight(56), child: TopAppBar('Đơn Hàng', null, null, null)),
         body: TabControllerWidget()
     );
   }

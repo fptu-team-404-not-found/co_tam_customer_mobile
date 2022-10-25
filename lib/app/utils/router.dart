@@ -3,9 +3,13 @@ import 'package:co_tam_customer_mobile/app/pages/booking/test.dart';
 import 'package:co_tam_customer_mobile/app/pages/notification/notification_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../pages/booking/booking_confirm_screen.dart';
 import '../pages/login/login_screen.dart';
 import '../pages/main/main_screen.dart';
 
+import '../pages/order_detail/order_detail_booking_screen.dart';
+import '../pages/order_detail/order_detail_history_screen.dart';
+import '../pages/order_detail/order_detail_rating_screen.dart';
 import '../pages/vouchers/voucher_detail_screen.dart';
 import '../pages/vouchers/voucher_main_screen.dart';
 import '../pages/wallet/wallet_screen.dart';
@@ -24,12 +28,20 @@ class Router {
       case 'MainBookingScreen':
         final title = settings.arguments as TestTitle;
         return MaterialPageRoute(builder: (_) => BookingMainScreen(title: title));
+      case 'ConfirmBookingScreen':
+        return MaterialPageRoute(builder: (_) => const BookingConfirmScreen());
       case 'VoucherMainScreen':
         return MaterialPageRoute(builder: (_) => const VoucherMainScreen());
       case 'VoucherDetailScreen':
         return MaterialPageRoute(builder: (_) => const VoucherDetailScreen());
       case 'WalletScreen':
         return MaterialPageRoute(builder: (_) => const WalletScreen());
+      case 'OrderDetailBookingScreen':
+        return MaterialPageRoute(builder: (_) => const OrderDetailBookingScreen());
+      case 'OrderDetailRatingScreen':
+        return MaterialPageRoute(builder: (_) => const OrderDetailRatingScreen());
+      case 'OrderDetailHistoryScreen':
+        return MaterialPageRoute(builder: (_) => const OrderDetailHistoryScreen());
 
       default:
         return MaterialPageRoute(builder: (_) {

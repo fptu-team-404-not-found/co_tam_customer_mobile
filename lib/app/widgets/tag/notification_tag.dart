@@ -19,23 +19,39 @@ class _NotificationTagState extends State<NotificationTag> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 4, top: 12, right: 4, bottom: 12),
+          padding: const EdgeInsets.only(left: 4, top: 12, right: 4, bottom: 6),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              FaIcon(widget.iconData),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
+              Row(
                 children: [
                   Padding(
-                      padding: const EdgeInsets.all(4),
-                      child: Center(child: Text(widget.mainInfo))),
-                  Center(child: Text(widget.subInfo))
+                    padding: const EdgeInsets.only(left: 0, top: 0, right: 15, bottom: 0),
+                    child: Ink(
+                      width: 20,
+                      decoration: const ShapeDecoration(
+                        color: AppColor.primaryColor100,
+                        shape: CircleBorder(),
+                      ),
+                      child: IconButton(
+                        icon: FaIcon(widget.iconData, size: 9),
+                        color: Colors.white,
+                        onPressed: () {},
+                      ),
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(widget.mainInfo, style: AppText.textBlack2,),
+                      const SizedBox(height: 5),
+                      Text(widget.subInfo, style: AppText.textGrey,),
+                    ],
+                  ),
                 ],
               ),
-              Align(alignment: Alignment.centerRight, child: Text(widget.extraInfo)),
+              Align(alignment: Alignment.centerRight, child: Text(widget.extraInfo, style: AppText.textGrey2,)),
             ],
           ),
         ),
