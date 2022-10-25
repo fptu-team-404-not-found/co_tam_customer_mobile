@@ -1,5 +1,6 @@
 import 'package:co_tam_customer_mobile/app/pages/booking/test.dart';
 import 'package:co_tam_customer_mobile/app/widgets/appbar/top_app_bar.dart';
+import 'package:co_tam_customer_mobile/app/widgets/booking/booking_main_button.dart';
 import 'package:co_tam_customer_mobile/app/widgets/booking/order_booking_address.dart';
 import 'package:co_tam_customer_mobile/app/widgets/booking/order_booking_extra_service.dart';
 import 'package:co_tam_customer_mobile/app/widgets/booking/order_booking_main_service.dart';
@@ -45,11 +46,12 @@ class _BookingMainScreenState extends State<BookingMainScreen> {
               SizedBox(height: 12),
               SizedBox(height: 1.5, width: 340, child: DecoratedBox(decoration: BoxDecoration(color: AppColor.primaryColor30),),),
               OrderBookingNote(),
-              SizedBox(height: 24),
-              ActionButton(numberOfButton: 2),
+              SizedBox(height: 70),
             ]
         ),
       ),
+      floatingActionButton: const BookingMainButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:co_tam_customer_mobile/app/pages/booking/test.dart';
 import 'package:co_tam_customer_mobile/app/pages/notification/notification_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../pages/booking/booking_confirm_screen.dart';
 import '../pages/login/login_screen.dart';
 import '../pages/main/main_screen.dart';
 
@@ -27,6 +28,8 @@ class Router {
       case 'MainBookingScreen':
         final title = settings.arguments as TestTitle;
         return MaterialPageRoute(builder: (_) => BookingMainScreen(title: title));
+      case 'ConfirmBookingScreen':
+        return MaterialPageRoute(builder: (_) => const BookingConfirmScreen());
       case 'VoucherMainScreen':
         return MaterialPageRoute(builder: (_) => const VoucherMainScreen());
       case 'VoucherDetailScreen':
