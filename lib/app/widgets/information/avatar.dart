@@ -10,7 +10,7 @@ class Avatar extends StatelessWidget {
 
   const Avatar(
       {Key? key,
-      this.imgUrl = 'assets/img/default_avatar.jpg',
+      this.imgUrl = 'assets/icons/antivirus.png',
       required this.radius})
       : super(key: key);
 

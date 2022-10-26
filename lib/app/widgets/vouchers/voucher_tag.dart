@@ -1,5 +1,6 @@
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:flutter/material.dart';
+import 'package:coupon_uikit/coupon_uikit.dart';
 
 class VoucherTag extends StatefulWidget {
   final String voucherCode;
@@ -22,52 +23,46 @@ class _VoucherTagState extends State<VoucherTag> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10),
-      child: AspectRatio(
-        aspectRatio: 3,
-        child: Container(
-          decoration: BoxDecoration(boxShadow: [
-            BoxShadow(
-                color: Colors.grey.shade600,
-                blurRadius: 10,
-                offset: const Offset(4, 4)),
-          ]),
-          child: Row(children: [
-            Container(
-              color: Colors.white,
-              width: 170,
+      padding: const EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 5),
+      child: SizedBox(
+        width: 360,
+        height: 110,
+        child: CouponCard(
+          curveAxis: Axis.vertical,
+          backgroundColor: Colors.white,
+           firstChild:  Padding(
+              padding: const EdgeInsets.all(10.0),
+               child: Image.asset(widget.image),
+            ),
+            secondChild: Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  left: BorderSide(
+                    width: 0.5,
+                    color: Colors.grey,
+                  )
+                )
+              ),
               child: Padding(
-                padding: const EdgeInsets.only(left: 12),
+                padding: const EdgeInsets.only(left: 35, top: 15, bottom: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 12,), //apply padding to some sides only
-                      child: Text(widget.voucherCode.toUpperCase(),
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                          )
-                      ),
-                    ),
-                    const Divider(
-                      height: 15,
-                      thickness: 1,
-                      endIndent: 30,
-                      color: AppColor.subColor10,
-                    ),
-                    const Text('Trị giá', style: TextStyle(fontSize: 12)),
-                    Text('${widget.value} đ',
+                    Text('Mã: ${widget.voucherCode}',
                         style: const TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    Text('GIẢM ${widget.value} đ',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
                           color: AppColor.primaryColor100,
                         )),
                     Text(
-                      'Đến ${widget.endDate}',
+                      'Ưu đãi đến ${widget.endDate}',
                       style: const TextStyle(
-                          height: 2.5,
-                          fontSize: 12,
+                        fontSize: 12,
                           fontWeight: FontWeight.w500,
                           color: Colors.grey),
                     )
@@ -75,14 +70,8 @@ class _VoucherTagState extends State<VoucherTag> {
                 ),
               ),
             ),
-            SizedBox(
-              width: 190,
-              height: 150,
-              child: Image.asset(widget.image, fit: BoxFit.cover),
-            )
-          ]),
+          ),
         ),
-      ),
     );
   }
 }

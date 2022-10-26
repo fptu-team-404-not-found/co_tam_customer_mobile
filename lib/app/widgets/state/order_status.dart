@@ -17,6 +17,7 @@ class _OrderStatusState extends State<OrderStatus> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -26,17 +27,17 @@ class _OrderStatusState extends State<OrderStatus> {
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 14.0),
                 child: Container(height: 3.0, width: 50.0, color: AppColor.subColor30)),
-            const FaIcon(FontAwesomeIcons.calendarCheck,
+            const FaIcon(FontAwesomeIcons.motorcycle,
                 color: AppColor.primaryColor30),
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 14.0),
                 child: Container(height: 3.0, width: 50.0, color: AppColor.subColor30)),
-            const FaIcon(FontAwesomeIcons.calendarCheck,
+            const FaIcon(FontAwesomeIcons.briefcase,
                 color: AppColor.primaryColor30),
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 14.0),
                 child: Container(height: 3.0, width: 50.0, color: AppColor.subColor30)),
-            const FaIcon(FontAwesomeIcons.calendarCheck,
+            const FaIcon(FontAwesomeIcons.check,
                 color: AppColor.primaryColor30),
           ],
         ),

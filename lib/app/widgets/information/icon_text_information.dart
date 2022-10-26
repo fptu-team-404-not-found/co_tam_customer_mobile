@@ -15,18 +15,21 @@ class IconTextInformation extends StatefulWidget {
 class _IconTextInformationState extends State<IconTextInformation> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Padding(padding: const EdgeInsets.all(8), child: FaIcon(widget.icon, color: AppColor.primaryColor100, size: 20)),
-        Text(widget.informationDetails, style: const TextStyle(
-          fontWeight: FontWeight.w500,
-          fontSize: 16,
-          fontStyle: FontStyle.normal,
-          color: AppColor.subColor100)
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(padding: const EdgeInsets.all(8), child: FaIcon(widget.icon, color: AppColor.primaryColor100, size: 20)),
+          Text(widget.informationDetails, style: const TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+            fontStyle: FontStyle.normal,
+            color: AppColor.subColor100)
+          )
+        ],
+      ),
     );
   }
 }
