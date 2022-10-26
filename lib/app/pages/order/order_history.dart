@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+import '../../utils/routes.dart';
 import '../../widgets/orders/orders_tag.dart';
 
 class OrderHistoryPage extends StatefulWidget {
@@ -15,11 +16,17 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
     return ListView.builder(
       itemCount: 50,
       itemBuilder: (BuildContext context, int index) {
-        return const OrderTag(
+        return
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, Routes.orderDetailHistoryScreen);
+          },
+         child: const OrderTag(
           mainInfo: 'Dọn dẹp vệ sinh nhà cửa',
           startTime: '12-12-2012 - 8:00',
           endTime: '12-12-2012 - 13:00',
           extraInfo: '60 000',
+        ),
         );
       },
     );

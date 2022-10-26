@@ -1,4 +1,6 @@
+import 'package:co_tam_customer_mobile/app/widgets/appbar/top_app_bar.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class AccountMain extends StatelessWidget {
 
@@ -6,6 +8,9 @@ class AccountMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child:  Text('Account'));
+    return Scaffold(
+      appBar:  PreferredSize(preferredSize: Size.fromHeight(56), child: TopAppBar('Thông tin', null, null, null)),
+      body: Container(),
+    );
   }
 }

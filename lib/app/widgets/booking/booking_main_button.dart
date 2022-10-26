@@ -35,7 +35,7 @@ class _BookingMainButtonState extends State<BookingMainButton> {
               ),
               child: SizedBox(
                 height: 40,
-                width: 240,
+                width: 230,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [

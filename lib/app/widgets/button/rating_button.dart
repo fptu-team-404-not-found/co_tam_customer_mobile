@@ -30,7 +30,7 @@ class _RatingButtonState extends State<RatingButton> {
         updateOnDrag: true,
         itemPadding: const EdgeInsets.symmetric(horizontal: 2),
         itemSize: 30,
-        itemBuilder: (context, _) => Icon(Icons.star, color: Colors.amber),
+        itemBuilder: (context, _) => const Icon(Icons.star, color: Colors.amber),
         onRatingUpdate: (rating) => setState(() {
           this.rating = rating;
         }),
