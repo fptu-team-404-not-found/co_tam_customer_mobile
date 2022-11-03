@@ -23,9 +23,9 @@ class _VoucherTagState extends State<VoucherTag> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 5),
+      padding: const EdgeInsets.only(top: 7, left: 7, right: 7),
       child: SizedBox(
-        width: 360,
+        width: 400,
         height: 110,
         child: CouponCard(
           curveAxis: Axis.vertical,
