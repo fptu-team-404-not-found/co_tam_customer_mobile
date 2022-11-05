@@ -13,7 +13,7 @@ import '../../widgets/state/order_status.dart';
 import '../order/order_controller.dart';
 
 class OrderDetailHistoryScreen extends View {
-  const OrderDetailHistoryScreen({super.key});
+  const OrderDetailHistoryScreen({Key? key}) : super(key: key);
   @override
   State<StatefulWidget> createState() => OrderDetailHistoryScreenView();
   }

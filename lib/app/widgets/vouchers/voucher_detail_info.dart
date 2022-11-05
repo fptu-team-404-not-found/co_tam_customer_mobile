@@ -19,7 +19,7 @@ class _VoucherDetailInforState extends State<VoucherDetailInfor> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
            Padding(
-            padding: EdgeInsets.only(left: 5, bottom: 8),
+            padding: const EdgeInsets.only(left: 5, bottom: 8),
             child: Text(
               widget.title,
               style: const TextStyle(
@@ -32,7 +32,7 @@ class _VoucherDetailInforState extends State<VoucherDetailInfor> {
           Padding(
             padding: const EdgeInsets.only(right: 7),
             child:  Text(
-              widget.content,
+              widget.content, overflow: TextOverflow.clip,
               style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 14,

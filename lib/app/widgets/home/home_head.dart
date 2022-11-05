@@ -15,16 +15,16 @@ class HomeHead extends StatelessWidget {
         Column(
           children: [
             Container(
-              width: double.infinity,//max ngang
+              width: MediaQuery.of(context).size.width,
               height: 170,
               decoration: const BoxDecoration(
-                  color: AppColor.primaryColor100
+                  color: AppColor.primaryColor100,
               ),
               child: Stack(
                 children: [
                   Positioned(
                       top: 60,
-                      left: 330,
+                      right: 10,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(7),
                         child: SizedBox(
@@ -45,7 +45,7 @@ class HomeHead extends StatelessWidget {
                   ),
                   Positioned(
                       top: 60,
-                      left: 285,
+                      right: 50,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(7),
                         child: SizedBox(
@@ -93,11 +93,12 @@ class HomeHead extends StatelessWidget {
         ),
         Positioned(
             top: 110,
-            left: 12,
-            child: SizedBox(
-              width: 360,
-              height: 120,
-              child: Image.asset('assets/img/home_decor.png'),
+            child: Container(
+              margin:  EdgeInsets.only(right: 10, left: 10),
+              child: Image.asset('assets/img/home_decor.png',
+                  fit: BoxFit.fill,
+                width:  MediaQuery.of(context).size.width - 20,
+                height: 120,),
             )
         ),
       ],

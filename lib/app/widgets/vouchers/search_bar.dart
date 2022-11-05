@@ -36,7 +36,8 @@ class _SearchBarState extends State<SearchBar> {
           ),
           TextButton(
             style: TextButton.styleFrom(
-              foregroundColor: Colors.white,
+              //1214
+              /*foregroundColor: Colors.white,*/
               backgroundColor: AppColor.primaryColor100,
               padding: const EdgeInsets.all(10.0),
               textStyle: const TextStyle(fontSize: 14),

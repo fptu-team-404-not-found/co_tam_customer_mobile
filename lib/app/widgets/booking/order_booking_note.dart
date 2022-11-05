@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 enum BestTutorSite { javatpoint, w3schools, tutorialandexample }
 
 class OrderBookingNote extends StatefulWidget {
-  const OrderBookingNote({super.key});
+  const OrderBookingNote({Key? key}) : super(key: key);
 
   @override
   State<OrderBookingNote> createState() => _OrderBookingNoteState();

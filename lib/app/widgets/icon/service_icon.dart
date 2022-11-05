@@ -7,7 +7,7 @@ class ServiceIcon extends StatelessWidget {
   final Image icon;
   final Function? actionFunction;
 
-  const ServiceIcon({super.key, this.size, this.title, required this.icon, this.actionFunction});
+  const ServiceIcon({Key? key, this.size, this.title, required this.icon, this.actionFunction}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

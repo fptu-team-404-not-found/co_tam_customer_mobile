@@ -8,12 +8,12 @@ class ExtraService extends StatelessWidget {
   final String price;
   final String description;
 
-  const ExtraService({super.key, required this.icon, required this.name, required this.price, required this.description});
+  const ExtraService({Key? key, required this.icon, required this.name, required this.price, required this.description}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return
-    Container(
+    SizedBox(
       width: 70,
       child: Column(
         children: [

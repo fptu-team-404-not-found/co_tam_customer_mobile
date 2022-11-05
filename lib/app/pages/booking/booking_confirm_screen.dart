@@ -14,7 +14,7 @@ class BookingConfirmScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(preferredSize: const Size.fromHeight(56), child: TopAppBar("Confirm", FontAwesomeIcons.circleArrowLeft, null, null)),
+      appBar: const PreferredSize(preferredSize: Size.fromHeight(56), child: TopAppBar("Confirm", FontAwesomeIcons.circleArrowLeft, null, null)),
       body: SingleChildScrollView(
         child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -44,9 +44,10 @@ class BookingConfirmScreen extends StatelessWidget {
                   height: 50,
                   width: 200,
                   child: TextButton(
-                      style: ButtonStyle(
+                    //1214
+                      /*style: ButtonStyle(
                         backgroundColor: MaterialStatePropertyAll<Color>(AppColor.primaryColor100),
-                      ),
+                      ),*/
                       onPressed: null ,
                       child: Text('Đặt đơn', style: TextStyle(color: Colors.white, fontSize: 20),)),
                 ),

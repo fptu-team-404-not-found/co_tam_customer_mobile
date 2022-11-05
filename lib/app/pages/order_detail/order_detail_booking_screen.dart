@@ -15,7 +15,7 @@ import '../../widgets/state/order_status.dart';
 import '../order/order_controller.dart';
 
 class OrderDetailBookingScreen extends View {
-  const OrderDetailBookingScreen({super.key});
+  const OrderDetailBookingScreen({Key? key}) : super(key: key);
   @override
   State<StatefulWidget> createState() => OrderDetailBookingScreenView();
 }

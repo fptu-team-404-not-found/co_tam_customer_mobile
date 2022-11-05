@@ -3,7 +3,7 @@ import 'package:co_tam_customer_mobile/app/widgets/booking/extra_service_list.da
 import 'package:flutter/material.dart';
 
 class OrderBookingExtraService extends StatefulWidget {
-  const OrderBookingExtraService({super.key});
+  const OrderBookingExtraService({Key? key}) : super(key: key);
 
   @override
   State<OrderBookingExtraService> createState() => _OrderBookingExtraServiceState();
@@ -23,8 +23,8 @@ class _OrderBookingExtraServiceState extends State<OrderBookingExtraService> {
               offset: const Offset(25, 0),
               child: const Text("Chọn dịch vụ thêm", style: AppText.textBlack3,),
             ),
-            SizedBox(height: 20),
-            ExtraServiceList(),
+            const SizedBox(height: 20),
+            const ExtraServiceList(),
           ],
         ),
       );
