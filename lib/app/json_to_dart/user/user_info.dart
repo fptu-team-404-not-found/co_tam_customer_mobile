@@ -20,7 +20,7 @@ class Data {
   int? id;
   String? name;
   String? phone;
-  String? dateOfBirth;
+  DateTime? dateOfBirth;
   String? email;
   String? linkFacebook;
   String? avatar;

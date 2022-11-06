@@ -35,7 +35,7 @@ class _UpdateInfoState extends State<UpdateInfo> {
     _nameController = TextEditingController(text: name.toString());
     _phoneNController = TextEditingController(text: '${phone}');
     _emailController = TextEditingController(text: '${email}');
-    _dateBirthController = TextEditingController(text: '${dateOfBirth}');
+    _dateBirthController = TextEditingController(text: dateOfBirth.toString().substring(0,10));
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -87,7 +87,7 @@ class _UpdateInfoState extends State<UpdateInfo> {
               ),
             ),
             FieldUpdate(title: "Họ và tên", conroller: _nameController,hintText: name.toString(),),
-            FieldUpdate(title: "Ngày sinh", conroller: _dateBirthController,hintText: dateOfBirth.toString(),),
+            FieldUpdate(title: "Ngày sinh", conroller: _dateBirthController,hintText: dateOfBirth.toString().substring(0,10),),
             FieldUpdate(title: "Điện thoại", conroller: _phoneNController,hintText: phone.toString(),),
             FieldUpdate(title: "Email", conroller: _emailController,hintText: email.toString(),),
             Row(
@@ -104,7 +104,7 @@ class _UpdateInfoState extends State<UpdateInfo> {
                             _emailController.text, linkFacebook, avatar, eWallet, context);
                         name = _nameController.text;
                         phone = _phoneNController.text;
-                        dateOfBirth = _dateBirthController.text;
+                        dateOfBirth = _dateBirthController.text.substring(0,10);
                         email = _emailController.text;
                       });
                     },

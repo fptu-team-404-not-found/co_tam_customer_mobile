@@ -26,11 +26,13 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
       id: json['id'] as int?,
       name: json['name'] as String?,
       phone: json['phone'] as String?,
-      dateOfBirth: json['dateOfBirth'] as String?,
+      dateOfBirth: json['dateOfBirth'] == null
+          ? null
+          : DateTime.parse(json['dateOfBirth'] as String),
       email: json['email'] as String?,
       linkFacebook: json['linkFacebook'] as String?,
       avatar: json['avatar'] as String?,
-      eWallet: json['eWallet'] as double?,
+      eWallet: (json['eWallet'] as num?)?.toDouble(),
       active: json['active'] as bool?,
       customerPromotions: (json['customerPromotions'] as List<dynamic>?)
           ?.map((e) => CustomerPromotions.fromJson(e as Map<String, dynamic>))
@@ -44,7 +46,7 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'phone': instance.phone,
-      'dateOfBirth': instance.dateOfBirth,
+      'dateOfBirth': instance.dateOfBirth?.toIso8601String(),
       'email': instance.email,
       'linkFacebook': instance.linkFacebook,
       'avatar': instance.avatar,

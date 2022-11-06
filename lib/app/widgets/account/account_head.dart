@@ -2,7 +2,7 @@ import 'package:co_tam_customer_mobile/app/json_to_dart/user/user_info.dart';
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:co_tam_customer_mobile/app/widgets/account/account_button.dart';
 import 'package:flutter/material.dart';
-
+import 'package:date_time_format/date_time_format.dart';
 import '../../pages/account/account_update.dart';
 import '../../pages/login/login_screen.dart';
 import '../../rest_api/rest_api.dart';
@@ -78,7 +78,7 @@ class _AccountHeadState extends State<AccountHead> {
                     thickness: 1,
                     color: AppColor.subColor30,
                   ),
-                  AccountInfoBar(textData: snapshot.data!.data!.dateOfBirth.toString(), iconData: Icons.cake,),
+                  AccountInfoBar(textData: snapshot.data!.data!.dateOfBirth.toString().substring(0,10), iconData: Icons.cake,),
                   const Divider(
                     height: 8,
                     thickness: 1,
@@ -108,8 +108,12 @@ class _AccountHeadState extends State<AccountHead> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       InkWell(
-                        onTap: () {},
-                        child: const AccountButton(textData: "Your Voucher")
+                        onTap: () {
+                          /*final dateTime = DateTime(snapshot.data!.data!.dateOfBirth!.);
+                          dateTime.format();
+                          print("time: " + dateTime.toString());*/
+                        },
+                        child: const AccountButton(textData: "Voucher")
                       ),
                       InkWell(
                           onTap: () {
@@ -133,7 +137,7 @@ class _AccountHeadState extends State<AccountHead> {
                                 MaterialPageRoute(builder: (context) => const LoginScreen()), (
                                 route) => false);
                           },
-                          child: const AccountButton(textData: "Logout")
+                          child: const AccountButton(textData: "Đăng xuất")
                       ),
                     ],
                   )
@@ -141,7 +145,7 @@ class _AccountHeadState extends State<AccountHead> {
               );
             }
             return const Center(
-                child: Text("error",
+                child: Text("lỗi",
                 )
             );
           },

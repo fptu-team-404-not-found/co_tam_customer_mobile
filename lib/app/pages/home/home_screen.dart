@@ -77,7 +77,7 @@ class HomeScreenState extends State<HomeScreen> {
                                         amount: voucherDetail.amount,
                                         description: voucherDetail.description,
                                       )));},
-                                  child: Image.asset(voucherDetail.image.toString(),
+                                  child: Image.network(voucherDetail.image.toString(),
                                       fit: BoxFit.fill),
                                 )
                             );

@@ -31,7 +31,7 @@ class _VoucherDetailScreenState extends State<VoucherDetailScreen> {
           children: [
             AspectRatio(
                 aspectRatio: 1.5,
-                child: Image.asset(image.toString())),
+                child: Image.network(image.toString(), fit: BoxFit.fill,)),
             SizedBox(
               height: 15,
             ),

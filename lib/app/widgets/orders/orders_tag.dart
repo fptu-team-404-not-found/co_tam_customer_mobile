@@ -7,19 +7,22 @@ class OrderTag extends StatefulWidget {
   final String startTime;
   final String? endTime;
   final String extraInfo;
+  final int id;
   const OrderTag(
       {Key? key,
       required this.mainInfo,
       required this.startTime,
         this.endTime,
-      required this.extraInfo, })
+      required this.extraInfo, required this.id})
       : super(key: key);
 
   @override
-  State<OrderTag> createState() => _OrderTagState();
+  State<OrderTag> createState() => _OrderTagState(id);
 }
 
 class _OrderTagState extends State<OrderTag> {
+  final id;
+  _OrderTagState(this.id);
   @override
   Widget build(BuildContext context) {
   List<ServiceIcon> list = [
@@ -57,7 +60,7 @@ class _OrderTagState extends State<OrderTag> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              list[1],
+              list[id - 1],
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

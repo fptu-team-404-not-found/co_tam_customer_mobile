@@ -10,16 +10,18 @@ class OrderRatingTag extends StatefulWidget {
   final String startTime;
   final String endTime;
   final String price;
-  final String endRatingDate;
-  const OrderRatingTag({Key? key, required this.mainInfo, required this.startTime, required this.endTime, required this.price, required this.endRatingDate}) : super(key: key);
+  final int id;
+  const OrderRatingTag({Key? key, required this.mainInfo, required this.startTime, required this.endTime, required this.price, required this.id}) : super(key: key);
 
   @override
-  State<OrderRatingTag> createState() => _OrderRatingTagState();
+  State<OrderRatingTag> createState() => _OrderRatingTagState(id);
 }
 
 class _OrderRatingTagState extends State<OrderRatingTag> {
+  final id;
+  _OrderRatingTagState(this.id);
   List<ServiceIcon> list = [
-    const ServiceIcon(
+     const ServiceIcon(
       title: 'Dọn dẹp',
       size: 50,
       icon: Image(
@@ -56,7 +58,7 @@ class _OrderRatingTagState extends State<OrderRatingTag> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              list[1],
+              list[id - 1],
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -78,10 +80,6 @@ class _OrderRatingTagState extends State<OrderRatingTag> {
                   Text('Giá tiền: ${widget.price}',style: const TextStyle(
                     fontSize: 12,
                     color: Colors.grey,
-                  ),),
-                  Text('Đánh giá trước: ${widget.endRatingDate}',style: const TextStyle(
-                    fontSize: 12,
-                    color: Colors.red,
                   ),),
                 ],
               ),

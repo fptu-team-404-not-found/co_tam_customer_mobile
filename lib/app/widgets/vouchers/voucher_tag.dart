@@ -32,7 +32,7 @@ class _VoucherTagState extends State<VoucherTag> {
           backgroundColor: Colors.white,
            firstChild:  Padding(
               padding: const EdgeInsets.all(10.0),
-               child: Image.asset(widget.image),
+               child: Image.network(widget.image, fit: BoxFit.fill,),
             ),
             secondChild: Container(
               decoration: const BoxDecoration(
