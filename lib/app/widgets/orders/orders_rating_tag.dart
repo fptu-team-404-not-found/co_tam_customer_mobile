@@ -18,7 +18,7 @@ class OrderRatingTag extends StatefulWidget {
 }
 
 class _OrderRatingTagState extends State<OrderRatingTag> {
-  final id;
+  final int id;
   _OrderRatingTagState(this.id);
   List<ServiceIcon> list = [
      const ServiceIcon(
@@ -55,10 +55,10 @@ class _OrderRatingTagState extends State<OrderRatingTag> {
           padding:
           const EdgeInsets.only(left: 4, top: 12, right: 4, bottom: 12),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              list[id - 1],
+              list[id- 1],
+              const SizedBox(width: 20,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -82,10 +82,6 @@ class _OrderRatingTagState extends State<OrderRatingTag> {
                     color: Colors.grey,
                   ),),
                 ],
-              ),
-              const Align(
-                  alignment: Alignment.topRight,
-                  child: RatingButton(),
               ),
             ],
           ),

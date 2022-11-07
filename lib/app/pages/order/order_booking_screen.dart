@@ -18,8 +18,8 @@ class _OrderBookingScreenState extends State<OrderBookingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: RefreshIndicator(
+    return Scaffold(
+      body: RefreshIndicator(
         key: _refreshIndicatorKey,
         color: Colors.white,
         backgroundColor: AppColor.primaryColor100,
@@ -34,7 +34,6 @@ class _OrderBookingScreenState extends State<OrderBookingScreen> {
           future: ShowListOrder(),
           builder: (context, snapshot){
             if (snapshot.connectionState == ConnectionState.waiting) {
-              print("snap: " + snapshot.toString());
               return const Center(
                 child: CircularProgressIndicator(
                   color: AppColor.primaryColor30,
@@ -44,7 +43,7 @@ class _OrderBookingScreenState extends State<OrderBookingScreen> {
             if(snapshot.hasData){
               if (snapshot.data!.data!.isEmpty) {
                 return const Center(
-                  child: Text('Cu don khong co gi ca!!!', style: TextStyle(
+                  child: Text('there are no package at all!!!', style: TextStyle(
                       color: Colors.white, fontSize: 16
                   ),),
                 );
@@ -65,7 +64,7 @@ class _OrderBookingScreenState extends State<OrderBookingScreen> {
                         order.id == 2 ? 'Khử trùng ' :
                         order.id == 3 ? 'Sofa - Rèm cửa' :
                                         'Thiết bị' ,
-                        subInfo: 'Đặt lúc' + order.dateTime.toString().substring(10,16),
+                        subInfo: 'Đặt lúc ${order.dateTime.toString().substring(11,16)}',
                         extraInfo:
                         order.orderState == 1 ?'Tìm kiếm' :
                         order.orderState == 2 ?'Đã nhận đơn' :

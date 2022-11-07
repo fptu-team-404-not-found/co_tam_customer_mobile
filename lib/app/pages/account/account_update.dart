@@ -50,9 +50,6 @@ class _UpdateInfoState extends State<UpdateInfo> {
                   onPressed: () {
                     setState((){});
                     Navigator.pushNamed(context, Routes.mainScreen0);
-                    /*Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(builder: (context) => const HomeScreen()), (
-                        route) => false);*/
                   },
                 ),
               ],

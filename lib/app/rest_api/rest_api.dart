@@ -59,7 +59,7 @@ Future updateUserInfo(name, phone, birthday, email, linkFB, avatar, eWallet,cont
         .showSnackBar(const SnackBar(content: Text("Your info has been updated")));
   }else{
     ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(content: Text("Unsuccessful")));
+        .showSnackBar(const SnackBar(content: Text("unsuccessful")));
   }
 }
 
@@ -92,9 +92,23 @@ Future<ListOfRating> ShowRating() async {
     Uri.parse('https://cotam.azurewebsites.net/api/work-in-order/customers/without-rating/1'),
     headers: {
       HttpHeaders.contentTypeHeader: "application/json; charset=utf-8",
-
     },
   );
   final responseJson = jsonDecode(response.body);
+  print(responseJson.toString());
   return ListOfRating.fromJson(responseJson);
+}
+//Update Rating
+Future UpdateRating(id,numberStart,context) async {
+  var response = await http.put(
+      Uri.parse("https://cotam.azurewebsites.net/api/work-in-order/$id/$numberStart"),
+      headers : {'Content-Type': 'application/json', 'charset': 'utf-8'},
+  );
+  if (response.statusCode == 200) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text("successful")));
+  }else{
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text("unsuccessful")));
+  }
 }

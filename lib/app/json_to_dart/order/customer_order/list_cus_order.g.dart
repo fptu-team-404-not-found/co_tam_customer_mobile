@@ -26,11 +26,9 @@ Map<String, dynamic> _$ListOrderOfCusToJson(ListOrderOfCus instance) =>
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
       id: json['id'] as int?,
-      dateTime: json['dateTime'] == null
-          ? null
-          : DateTime.parse(json['dateTime'] as String),
-      subTotal: json['subTotal'] as int?,
-      total: json['total'] as int?,
+      dateTime: json['dateTime'] as String?,
+      subTotal: (json['subTotal'] as num?)?.toDouble(),
+      total: (json['total'] as num?)?.toDouble(),
       houseId: json['houseId'] as int?,
       packageId: json['packageId'] as int?,
       promotionId: json['promotionId'] as int?,
@@ -53,7 +51,7 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'id': instance.id,
-      'dateTime': instance.dateTime?.toIso8601String(),
+      'dateTime': instance.dateTime,
       'subTotal': instance.subTotal,
       'total': instance.total,
       'houseId': instance.houseId,
@@ -137,7 +135,7 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
       email: json['email'] as String?,
       linkFacebook: json['linkFacebook'] as String?,
       avatar: json['avatar'] as String?,
-      eWallet: json['eWallet'] as int?,
+      eWallet: (json['eWallet'] as num?)?.toDouble(),
       active: json['active'] as bool?,
     );
 
@@ -159,7 +157,7 @@ Package _$PackageFromJson(Map<String, dynamic> json) => Package(
       duration: json['duration'] as int?,
       active: json['active'] as int?,
       serviceId: json['serviceId'] as int?,
-      price: json['price'] as int?,
+      price: (json['price'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$PackageToJson(Package instance) => <String, dynamic>{
@@ -189,8 +187,8 @@ Promotion _$PromotionFromJson(Map<String, dynamic> json) => Promotion(
       id: json['id'] as int?,
       code: json['code'] as String?,
       description: json['description'] as String?,
-      value: json['value'] as int?,
-      discount: json['discount'] as int?,
+      value: (json['value'] as num?)?.toDouble(),
+      discount: (json['discount'] as num?)?.toDouble(),
       amount: json['amount'] as int?,
       startDate: json['startDate'] as String?,
       endDate: json['endDate'] as String?,

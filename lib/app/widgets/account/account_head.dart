@@ -2,7 +2,6 @@ import 'package:co_tam_customer_mobile/app/json_to_dart/user/user_info.dart';
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:co_tam_customer_mobile/app/widgets/account/account_button.dart';
 import 'package:flutter/material.dart';
-import 'package:date_time_format/date_time_format.dart';
 import '../../pages/account/account_update.dart';
 import '../../pages/login/login_screen.dart';
 import '../../rest_api/rest_api.dart';
@@ -54,12 +53,15 @@ class _AccountHeadState extends State<AccountHead> {
                                   margin: const EdgeInsets.only(bottom: 12),
                                   width: 140,
                                   height: 140,
+                                  child:  ClipRRect(
+                                    borderRadius:
+                                     BorderRadius.all(Radius.circular(80.0)),
+                                    child: Image.network(snapshot.data!.data!.avatar!.toString().toString()),
+                                  ),
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(color: Colors.white, width: 8),
-                                      image: const DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: AssetImage("snapshot.data!.data!.avatar!.toString()"))),
+                                      ),
                                 ),
                                 Text(
                                   snapshot.data!.data!.name.toString(),
@@ -124,7 +126,7 @@ class _AccountHeadState extends State<AccountHead> {
                                     dateOfBirth: snapshot.data!.data!.dateOfBirth!.toString(),
                                     email: snapshot.data!.data!.email!.toString(),
                                     linkFacebook: snapshot.data!.data!.linkFacebook!.toString(),
-                                    avatar: "snapshot.data!.data!.avatar!.toString()",
+                                    avatar: snapshot.data!.data!.avatar!.toString(),
                                     eWallet: snapshot.data!.data!.eWallet!,
                                     active: true
                                 )));

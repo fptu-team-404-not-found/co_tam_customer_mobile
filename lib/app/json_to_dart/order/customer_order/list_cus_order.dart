@@ -18,9 +18,10 @@ class ListOrderOfCus {
 @JsonSerializable()
 class Data {
   int? id;
-  DateTime? dateTime;
-  int? subTotal;
-  int? total;
+  //Null? endTime;
+  String? dateTime;
+  double? subTotal;
+  double? total;
   int? houseId;
   int? packageId;
   int? promotionId;
@@ -30,11 +31,12 @@ class Data {
   Package? package;
   PaymentMethod? paymentMethod;
   Promotion? promotion;
-  /*List<null>? orderDetails;
-  List<nul>? workerInOrders;*/
+  /*List<Null>? orderDetails;
+  List<Null>? workerInOrders;*/
 
   Data(
       {this.id,
+        //this.endTime,
         this.dateTime,
         this.subTotal,
         this.total,
@@ -63,7 +65,7 @@ class House {
   int? buildingId;
   Building? building;
   Customer? customer;
-  //List<null>? orders;
+  //List<Null>? orders;
 
   House(
       {this.id,
@@ -85,11 +87,11 @@ class Building {
   String? name;
   bool? active;
   int? areaId;
- // List<null>? area;
+  //Null? area;
   List<Houses>? houses;
 
   Building(
-      {this.id, this.name, this.active, this.areaId,/* this.area,*/this.houses});
+      {this.id, this.name, this.active, this.areaId,/* this.area,*/ this.houses});
 
   factory Building.fromJson(Map<String, dynamic> json) => _$BuildingFromJson(json);
 
@@ -103,7 +105,7 @@ class Houses {
   int? customerId;
   int? buildingId;
   Customer? customer;
-  //List<null>? orders;
+  //List<Null>? orders;
 
   Houses(
       {this.id,
@@ -128,10 +130,10 @@ class Customer {
   String? email;
   String? linkFacebook;
   String? avatar;
-  int? eWallet;
+  double? eWallet;
   bool? active;
-  /*List<null>? customerPromotions;
-  List<null>? houses;*/
+  /*List<Null>? customerPromotions;
+  List<Null>? houses;*/
 
   Customer(
       {this.id,
@@ -151,6 +153,7 @@ class Customer {
   Map<String, dynamic> toJson() => _$CustomerToJson(this);
 }
 
+
 @JsonSerializable()
 class Package {
   int? id;
@@ -158,7 +161,7 @@ class Package {
   int? duration;
   int? active;
   int? serviceId;
-  int? price;
+  double? price;
   /*List<null>? service;
   List<nul>? orders;*/
 
@@ -198,8 +201,8 @@ class Promotion {
   int? id;
   String? code;
   String? description;
-  int? value;
-  int? discount;
+  double? value;
+  double? discount;
   int? amount;
   String? startDate;
   String? endDate;

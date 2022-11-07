@@ -51,7 +51,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                       history.id == 2 ? 'Khử trùng ' :
                       history.id == 3 ? 'Sofa - Rèm cửa' :
                       'Thiết bị' ,
-                      startTime: history.dateTime.toString().substring(0,16),
+                      startTime: history.dateTime.toString().substring(0,10) + " - "+ history.dateTime.toString().substring(11,16),
                       endTime: '12-12-2012 - 13:00',
                       extraInfo: history.total.toString(),
                     ),
