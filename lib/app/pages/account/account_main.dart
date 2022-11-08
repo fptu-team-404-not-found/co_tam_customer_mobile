@@ -1,5 +1,4 @@
 import 'package:co_tam_customer_mobile/app/widgets/account/account_head.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AccountMain extends StatelessWidget {
