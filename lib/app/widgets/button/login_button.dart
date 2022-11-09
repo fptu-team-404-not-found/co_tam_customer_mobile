@@ -18,7 +18,11 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      onPressed: () => customFunction!(),
+      onPressed: () {
+        if (customFunction != null) {
+          customFunction!();
+        }
+      },
       style: ButtonStyle(
         minimumSize: MaterialStateProperty.all(const Size(300, 50)),
         backgroundColor: MaterialStateProperty.all(AppColor.primaryColor100),

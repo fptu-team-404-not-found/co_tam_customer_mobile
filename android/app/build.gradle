@@ -45,14 +45,14 @@ android {
         versionName flutterVersionName
     }
 
-    /*signingConfigs {
+    signingConfigs {
         debug {
             keyAlias 'upload'
             keyPassword 'fptuteam404notfound'
             storeFile file('upload-keystore.jks')
             storePassword 'fptuteam404notfound'
         }
-    }*/
+    }
 
     buildTypes {
         release {
