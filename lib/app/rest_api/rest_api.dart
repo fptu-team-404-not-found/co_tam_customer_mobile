@@ -7,16 +7,39 @@ import 'package:co_tam_customer_mobile/app/json_to_dart/service/package/list_pac
 import 'package:co_tam_customer_mobile/app/json_to_dart/service/extra_service/extra_service.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../json_to_dart/booking/list_house/list_house.dart';
 import '../json_to_dart/booking/order_booking/order_booking.dart';
+import '../json_to_dart/jwt/jwt.dart';
 import '../json_to_dart/order/rating_order/list_rating.dart';
+import '../json_to_dart/token/token.dart';
 import '../json_to_dart/user/user_info.dart';
 import '../json_to_dart/voucher/list_of_voucher.dart';
 import '../json_to_dart/voucher_not_use/voucher_not_use.dart';
 
+/// Auth
+Future<Token> authLogin(email, name) async {
+  final response = await http.get(
+      Uri.parse('https://cotam.azurewebsites.net/api/auth-customer/customers/login-ver?email=$email&name=$name'),
+      headers: {
+        HttpHeaders.contentTypeHeader: "application/json; charset=utf-8",
+      }
+  );
 
+  final responseJson = jsonDecode(response.body);
+  return Token.fromJson(responseJson);
+}
 
+Future<JWT> jwtDecode() async {
+  final prefs = await SharedPreferences.getInstance();
+
+  final accessToken = prefs.getString('accessToken');
+  Map<String, dynamic> payload = Jwt.parseJwt(accessToken.toString());
+  JWT jwt = JWT.fromJson(payload);
+
+  return jwt;
+}
 
 //Voucher
 //show all

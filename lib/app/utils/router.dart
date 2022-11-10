@@ -1,11 +1,8 @@
-import 'package:co_tam_customer_mobile/app/json_to_dart/booking/list_house/list_house.dart';
 import 'package:co_tam_customer_mobile/app/pages/booking/booking_main_screen.dart';
-import 'package:co_tam_customer_mobile/app/pages/booking/test.dart';
+import 'package:co_tam_customer_mobile/app/pages/login/login_page.dart';
 import 'package:co_tam_customer_mobile/app/pages/notification/notification_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../pages/booking/booking_confirm_screen.dart';
-import '../pages/login/login_screen.dart';
 import '../pages/main/main_screen.dart';
 
 import '../pages/order_detail/order_detail_booking_screen.dart';
@@ -18,7 +15,7 @@ class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case 'LoginScreen':
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(builder: (_) => const LoginPage());
       case 'MainScreen0':
         return MaterialPageRoute(builder: (_) => const MainScreen(selectedInit: 0,));
       case 'MainScreen2':

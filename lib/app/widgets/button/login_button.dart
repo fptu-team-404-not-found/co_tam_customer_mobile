@@ -7,15 +7,18 @@ import '../../utils/routes.dart';
 class LoginButton extends StatelessWidget {
   final String title;
   final FaIcon icon;
+  final Function? customFunction;
 
-  const LoginButton({Key? key, required this.title, required this.icon})
+  const LoginButton({Key? key, required this.title, required this.icon, this.customFunction})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: () {
-        Navigator.pushNamed(context, Routes.mainScreen0);
+        if (customFunction != null) {
+          customFunction!();
+        }
       },
       style: ButtonStyle(
         minimumSize: MaterialStateProperty.all(const Size(300, 50)),

@@ -1,9 +1,11 @@
 import 'package:co_tam_customer_mobile/app/json_to_dart/user/user_info.dart';
+import 'package:co_tam_customer_mobile/app/pages/login/login_page.dart';
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:co_tam_customer_mobile/app/widgets/account/account_button.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../pages/account/account_update.dart';
-import '../../pages/login/login_screen.dart';
 import '../../rest_api/rest_api.dart';
 import 'account_info_bar.dart';
 
@@ -132,10 +134,18 @@ class _AccountHeadState extends State<AccountHead> {
                           child: const AccountButton(textData: "Cập nhật")
                       ),
                       InkWell(
-                          onTap: () {
-                            Navigator.of(context).pushAndRemoveUntil(
-                                MaterialPageRoute(builder: (context) => const LoginScreen()), (
-                                route) => false);
+                          onTap: () async {
+                            GoogleSignIn googleSignIn = GoogleSignIn();
+                            try {
+                              await googleSignIn.signOut();
+                              final prefs = await SharedPreferences.getInstance();
+                              await prefs.remove('accessToken');
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(builder: (context) => const LoginPage()), (
+                                  route) => false);
+                            } catch (error) {
+                              print(error);
+                            }
                           },
                           child: const AccountButton(textData: "Đăng xuất")
                       ),
