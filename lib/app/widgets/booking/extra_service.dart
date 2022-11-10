@@ -6,9 +6,8 @@ class ExtraService extends StatelessWidget {
   final ServiceIcon icon;
   final String name;
   final String price;
-  final String description;
 
-  const ExtraService({Key? key, required this.icon, required this.name, required this.price, required this.description}) : super(key: key);
+  const ExtraService({Key? key, required this.icon, required this.name, required this.price}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class ExtraService extends StatelessWidget {
         children: [
           icon,
           const SizedBox(height: 8),
-          Text(name, style: AppText.textBlack, textAlign: TextAlign.center),
+          Text(name, style: AppText.textBlack, textAlign: TextAlign.center, overflow: TextOverflow.clip),
           const SizedBox(height: 4),
           Text(price, style: AppText.textGrey, textAlign: TextAlign.center),
         ],

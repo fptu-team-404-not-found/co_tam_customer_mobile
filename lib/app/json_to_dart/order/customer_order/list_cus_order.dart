@@ -18,8 +18,8 @@ class ListOrderOfCus {
 @JsonSerializable()
 class Data {
   int? id;
-  //Null? endTime;
-  String? dateTime;
+  DateTime? endTime;
+  DateTime? dateTime;
   double? subTotal;
   double? total;
   int? houseId;
@@ -31,12 +31,12 @@ class Data {
   Package? package;
   PaymentMethod? paymentMethod;
   Promotion? promotion;
-  /*List<Null>? orderDetails;
-  List<Null>? workerInOrders;*/
+  List<OrderDetails>? orderDetails;
+  List<WorkerInOrders>? workerInOrders;
 
   Data(
       {this.id,
-        //this.endTime,
+        this.endTime,
         this.dateTime,
         this.subTotal,
         this.total,
@@ -49,8 +49,8 @@ class Data {
         this.package,
         this.paymentMethod,
         this.promotion,
-        /*this.orderDetails,
-        this.workerInOrders*/});
+        this.orderDetails,
+        this.workerInOrders});
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
   Map<String, dynamic> toJson() => _$DataToJson(this);
@@ -65,7 +65,6 @@ class House {
   int? buildingId;
   Building? building;
   Customer? customer;
-  //List<Null>? orders;
 
   House(
       {this.id,
@@ -74,8 +73,7 @@ class House {
         this.customerId,
         this.buildingId,
         this.building,
-        this.customer,
-        /*this.orders*/});
+        this.customer,});
   factory House.fromJson(Map<String, dynamic> json) => _$HouseFromJson(json);
 
   Map<String, dynamic> toJson() => _$HouseToJson(this);
@@ -87,38 +85,33 @@ class Building {
   String? name;
   bool? active;
   int? areaId;
-  //Null? area;
-  List<Houses>? houses;
+  Area? area;
 
   Building(
-      {this.id, this.name, this.active, this.areaId,/* this.area,*/ this.houses});
+      {this.id, this.name, this.active, this.areaId, this.area});
 
   factory Building.fromJson(Map<String, dynamic> json) => _$BuildingFromJson(json);
 
   Map<String, dynamic> toJson() => _$BuildingToJson(this);
 }
 @JsonSerializable()
-class Houses {
+class Area {
   int? id;
-  String? number;
+  String? name;
   bool? active;
-  int? customerId;
-  int? buildingId;
-  Customer? customer;
-  //List<Null>? orders;
+  String? district;
+  String? city;
 
-  Houses(
+  Area(
       {this.id,
-        this.number,
+        this.name,
         this.active,
-        this.customerId,
-        this.buildingId,
-        this.customer,
-        /*this.orders*/});
+        this.district,
+        this.city,});
 
-  factory Houses.fromJson(Map<String, dynamic> json) => _$HousesFromJson(json);
+  factory Area.fromJson(Map<String, dynamic> json) => _$AreaFromJson(json);
 
-  Map<String, dynamic> toJson() => _$HousesToJson(this);
+  Map<String, dynamic> toJson() => _$AreaToJson(this);
 
 }
 @JsonSerializable()
@@ -126,14 +119,13 @@ class Customer {
   int? id;
   String? name;
   String? phone;
-  String? dateOfBirth;
+  DateTime? dateOfBirth;
   String? email;
   String? linkFacebook;
   String? avatar;
   double? eWallet;
   bool? active;
-  /*List<Null>? customerPromotions;
-  List<Null>? houses;*/
+  List<CustomerPromotions>? customerPromotions;
 
   Customer(
       {this.id,
@@ -145,12 +137,35 @@ class Customer {
         this.avatar,
         this.eWallet,
         this.active,
-        /*this.customerPromotions,
-        this.houses*/});
+        this.customerPromotions,});
+
 
   factory Customer.fromJson(Map<String, dynamic> json) => _$CustomerFromJson(json);
 
   Map<String, dynamic> toJson() => _$CustomerToJson(this);
+}
+
+@JsonSerializable()
+class CustomerPromotions {
+  int? id;
+  bool? isUsed;
+  int? customerId;
+  int? promotionId;
+  String? customer;
+  String? promotion;
+
+  CustomerPromotions(
+      {this.id,
+        this.isUsed,
+        this.customerId,
+        this.promotionId,
+        this.customer,
+        this.promotion});
+
+
+  factory CustomerPromotions.fromJson(Map<String, dynamic> json) => _$CustomerPromotionsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CustomerPromotionsToJson(this);
 }
 
 
@@ -162,8 +177,7 @@ class Package {
   int? active;
   int? serviceId;
   double? price;
-  /*List<null>? service;
-  List<nul>? orders;*/
+  Service? service;
 
   Package(
       {this.id,
@@ -172,12 +186,56 @@ class Package {
         this.active,
         this.serviceId,
         this.price,
-        /*this.service,
-        this.orders*/});
-
+        this.service,});
   factory Package.fromJson(Map<String, dynamic> json) => _$PackageFromJson(json);
 
   Map<String, dynamic> toJson() => _$PackageToJson(this);
+
+
+}
+@JsonSerializable()
+class Service {
+  int? id;
+  String? name;
+  String? description;
+  int? active;
+  List<ExtraServices>? extraServices;
+
+  Service(
+      {this.id,
+        this.name,
+        this.description,
+        this.active,
+        this.extraServices,});
+
+  factory Service.fromJson(Map<String, dynamic> json) => _$ServiceFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ServiceToJson(this);
+
+
+}
+@JsonSerializable()
+class ExtraServices {
+  int? id;
+  String? name;
+  String? description;
+  double? price;
+  int? active;
+  int? serviceId;
+  String? service;
+
+  ExtraServices(
+      {this.id,
+        this.name,
+        this.description,
+        this.price,
+        this.active,
+        this.serviceId,
+        this.service});
+
+  factory ExtraServices.fromJson(Map<String, dynamic> json) => _$ExtraServicesFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ExtraServicesToJson(this);
 
 
 }
@@ -186,14 +244,12 @@ class PaymentMethod {
   int? id;
   String? name;
   bool? active;
-  //List<null>? orders;
 
-  PaymentMethod({this.id, this.name, this.active, /*this.orders*/});
+  PaymentMethod({this.id, this.name, this.active});
 
   factory PaymentMethod.fromJson(Map<String, dynamic> json) => _$PaymentMethodFromJson(json);
 
   Map<String, dynamic> toJson() => _$PaymentMethodToJson(this);
-
 
 }
 @JsonSerializable()
@@ -204,12 +260,11 @@ class Promotion {
   double? value;
   double? discount;
   int? amount;
-  String? startDate;
-  String? endDate;
+  DateTime? startDate;
+  DateTime? endDate;
   bool? active;
   String? image;
-  /*List<void>? customerPromotions;
-  List<void>? orders;*/
+  List<CustomerPromotions>? customerPromotions;
 
   Promotion(
       {this.id,
@@ -222,11 +277,152 @@ class Promotion {
         this.endDate,
         this.active,
         this.image,
-        /*this.customerPromotions,
-        this.orders*/});
+        this.customerPromotions});
+
 
   factory Promotion.fromJson(Map<String, dynamic> json) => _$PromotionFromJson(json);
 
   Map<String, dynamic> toJson() => _$PromotionToJson(this);
 
 }
+
+@JsonSerializable()
+class OrderDetails {
+  int? id;
+  int? extraServiceId;
+  int? orderId;
+  ExtraServices? extraService;
+  String? order;
+
+  OrderDetails(
+      {this.id,
+        this.extraServiceId,
+        this.orderId,
+        this.extraService,
+        this.order});
+
+  factory OrderDetails.fromJson(Map<String, dynamic> json) => _$OrderDetailsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrderDetailsToJson(this);
+
+
+}
+
+@JsonSerializable()
+class WorkerInOrders {
+  int? id;
+  int? houseWorkerId;
+  int? orderId;
+  int? rating;
+  HouseWorker? houseWorker;
+  String? order;
+
+  WorkerInOrders(
+      {this.id,
+        this.houseWorkerId,
+        this.orderId,
+        this.rating,
+        this.houseWorker,
+        this.order});
+
+  factory WorkerInOrders.fromJson(Map<String, dynamic> json) => _$WorkerInOrdersFromJson(json);
+
+  Map<String, dynamic> toJson() => _$WorkerInOrdersToJson(this);
+
+
+}
+@JsonSerializable()
+class HouseWorker {
+  int? id;
+  String? name;
+  String? phone;
+  DateTime? dateOfBirth;
+  DateTime? email;
+  String? linkFacebook;
+  String? avatar;
+  int? active;
+  int? areaId;
+  int? managerId;
+  Manager? manager;
+  List<WorkerTags>? workerTags;
+
+  HouseWorker(
+      {this.id,
+        this.name,
+        this.phone,
+        this.dateOfBirth,
+        this.email,
+        this.linkFacebook,
+        this.avatar,
+        this.active,
+        this.areaId,
+        this.managerId,
+        this.manager,
+        this.workerTags});
+
+  factory HouseWorker.fromJson(Map<String, dynamic> json) => _$HouseWorkerFromJson(json);
+
+  Map<String, dynamic> toJson() => _$HouseWorkerToJson(this);
+
+
+}
+@JsonSerializable()
+class Manager {
+  int? id;
+  String? name;
+  String? phone;
+  DateTime? dateOfBirth;
+  String? email;
+  String? linkFacebook;
+  String? avatar;
+  bool? active;
+  int? roleId;
+  Role? role;
+
+  Manager(
+      {this.id,
+        this.name,
+        this.phone,
+        this.dateOfBirth,
+        this.linkFacebook,
+        this.avatar,
+        this.active,
+        this.roleId,
+        this.role,});
+
+  factory Manager.fromJson(Map<String, dynamic> json) => _$ManagerFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ManagerToJson(this);
+
+
+}
+
+@JsonSerializable()
+class Role {
+  int? id;
+  String? name;
+
+  Role({this.id, this.name,});
+
+  factory Role.fromJson(Map<String, dynamic> json) => _$RoleFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RoleToJson(this);
+
+
+}
+@JsonSerializable()
+class WorkerTags {
+  int? id;
+  String? name;
+  int? houseWorkerId;
+  String? houseWorker;
+
+  WorkerTags({this.id, this.name, this.houseWorkerId, this.houseWorker});
+
+  factory WorkerTags.fromJson(Map<String, dynamic> json) => _$WorkerTagsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$WorkerTagsToJson(this);
+
+
+}
+

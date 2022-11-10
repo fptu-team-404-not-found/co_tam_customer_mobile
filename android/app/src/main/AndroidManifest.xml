@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.team404notfound.co_tam_customer_mobile">
    <application
-        android:label="Cô Tấm - Customer"
+        android:label="Cô Tấm"
         android:name="${applicationName}"
         android:icon="@mipmap/logo">
         <activity

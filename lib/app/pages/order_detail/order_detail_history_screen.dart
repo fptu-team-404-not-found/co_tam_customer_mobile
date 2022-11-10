@@ -44,4 +44,5 @@ class OrderDetailHistoryScreenView
     floatingActionButton: const ActionButton(state: 'Đã thanh toán',),
     floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
   );
+
 }

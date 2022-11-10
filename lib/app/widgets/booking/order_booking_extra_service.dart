@@ -3,7 +3,8 @@ import 'package:co_tam_customer_mobile/app/widgets/booking/extra_service_list.da
 import 'package:flutter/material.dart';
 
 class OrderBookingExtraService extends StatefulWidget {
-  const OrderBookingExtraService({Key? key}) : super(key: key);
+  const OrderBookingExtraService({Key? key, required this.id}) : super(key: key);
+  final id;
 
   @override
   State<OrderBookingExtraService> createState() => _OrderBookingExtraServiceState();
@@ -15,7 +16,7 @@ class _OrderBookingExtraServiceState extends State<OrderBookingExtraService> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 190,
+      height: 230,
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -24,7 +25,7 @@ class _OrderBookingExtraServiceState extends State<OrderBookingExtraService> {
               child: const Text("Chọn dịch vụ thêm", style: AppText.textBlack3,),
             ),
             const SizedBox(height: 20),
-            const ExtraServiceList(),
+            ExtraServiceList(id : widget.id),
           ],
         ),
       );

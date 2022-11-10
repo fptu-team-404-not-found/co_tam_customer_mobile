@@ -20,80 +20,78 @@ class HomeScreenState extends State<HomeScreen> {
   final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
-    return Container(
-          child: CustomScrollView(
-            slivers: <Widget>[
-              const SliverToBoxAdapter(
-                child: SizedBox(height: 230, child: HomeHead()),
-              ),
-              const SliverToBoxAdapter(
-                child:ServiceTitle(),
-              ),
-              const SliverToBoxAdapter(
-                child: ServiceIconList(),
-              ),
-              const SliverToBoxAdapter(
-                child: SizedBox(height: 10),
-              ),
-              const SliverToBoxAdapter(
-                child: VoucherTitle(),
-              ),
-              SliverToBoxAdapter(
-                child: FutureBuilder<ListOfVoucher>(
-                  future: ShowAllVoucher(1,3),
-                  builder: (context, snapshot){
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(
-                          color: AppColor.primaryColor30,
-                        ),
+    return CustomScrollView(
+      slivers: <Widget>[
+        const SliverToBoxAdapter(
+          child: SizedBox(height: 230, child: HomeHead()),
+        ),
+        const SliverToBoxAdapter(
+          child:ServiceTitle(),
+        ),
+        const SliverToBoxAdapter(
+          child: ServiceIconList(),
+        ),
+        const SliverToBoxAdapter(
+          child: SizedBox(height: 10),
+        ),
+        const SliverToBoxAdapter(
+          child: VoucherTitle(),
+        ),
+        SliverToBoxAdapter(
+          child: FutureBuilder<ListOfVoucher>(
+            future: ShowAllVoucher(1,3),
+            builder: (context, snapshot){
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: AppColor.primaryColor30,
+                  ),
+                );
+              }
+              if(snapshot.hasData){
+                if (snapshot.data!.data!.isEmpty) {
+                  return const Center(
+                    child: Text('Không voucher để hiển thị', style: TextStyle(
+                        color: Colors.white, fontSize: 16
+                    ),),
+                  );
+                }
+                else {
+                  return ListView.builder(
+                    controller: _scrollController,
+                    shrinkWrap: true,
+                    itemCount: 3,
+                    itemBuilder: (BuildContext context, int index) {
+                      Data voucherDetail = snapshot.data!.data![index];
+                      return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: GestureDetector(
+                            onTap: () {Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => VoucherDetailScreen(
+                                  image: voucherDetail.image,
+                                  code: voucherDetail.code,
+                                  value: voucherDetail.value,
+                                  startDate: voucherDetail.startDate,
+                                  endDate: voucherDetail.endDate,
+                                  amount: voucherDetail.amount,
+                                  description: voucherDetail.description,
+                                )));},
+                            child: Image.network(voucherDetail.image.toString(),
+                                fit: BoxFit.fill),
+                          )
                       );
-                    }
-                    if(snapshot.hasData){
-                      if (snapshot.data!.data!.isEmpty) {
-                        return const Center(
-                          child: Text('there are no package at all!!!', style: TextStyle(
-                              color: Colors.white, fontSize: 16
-                          ),),
-                        );
-                      }
-                      else {
-                        return ListView.builder(
-                          controller: _scrollController,
-                          shrinkWrap: true,
-                          itemCount: 3,
-                          itemBuilder: (BuildContext context, int index) {
-                            Data voucherDetail = snapshot.data!.data![index];
-                            return Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: GestureDetector(
-                                  onTap: () {Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => VoucherDetailScreen(
-                                        image: voucherDetail.image,
-                                        code: voucherDetail.code,
-                                        value: voucherDetail.value,
-                                        startDate: voucherDetail.startDate,
-                                        endDate: voucherDetail.endDate,
-                                        amount: voucherDetail.amount,
-                                        description: voucherDetail.description,
-                                      )));},
-                                  child: Image.network(voucherDetail.image.toString(),
-                                      fit: BoxFit.fill),
-                                )
-                            );
-                          },
-                        );
-                      }
+                    },
+                  );
+                }
 
-                    }
-                    return const Center(
-                      child: Text('Error'),
-                    );
-                  },
-                )
-              ),
-            ],
-          ),
-        );
+              }
+              return const Center(
+                child: Text('Error'),
+              );
+            },
+          )
+        ),
+      ],
+    );
   }
 }

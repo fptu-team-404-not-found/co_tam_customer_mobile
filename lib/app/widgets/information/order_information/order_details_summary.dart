@@ -14,31 +14,32 @@ class OrderDetailsSummary extends StatefulWidget {
 class _OrderDetailsSummaryState extends State<OrderDetailsSummary> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Padding(padding: EdgeInsets.all(15),
+    child: Column(
       children:  [
         Divider(color: AppColor.primaryColor100),
         Text('Tóm tắt dịch vụ', style: TextStyle(
-          fontWeight: FontWeight.w600,
-          fontSize: 24
+            fontWeight: FontWeight.w600,
+            fontSize: 24
         )),
         Padding(padding: EdgeInsets.all(4), child: OrderDetailsSummaryPrice(title: 'Dịch vụ chính', price: '220 000')),
         Padding(padding: EdgeInsets.all(4), child: OrderDetailsSummaryPrice(title: 'Dịch vụ thêm', price: '150 000')),
         Padding(padding: EdgeInsets.all(4), child: OrderDetailsSummaryPrice(title: 'Ưu đãi', price: '70 000')),
         SizedBox(height: 20,),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children:  [
-          Text( 'Tổng tạm tính', style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold
-          )),
-          Text('300 000', style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold
-          )),
-        ],
-      )
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children:  [
+            Text( 'Tổng tạm tính', style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold
+            )),
+            Text('300 000', style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold
+            )),
+          ],
+        )
       ],
-    );
+    ),);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:co_tam_customer_mobile/app/rest_api/rest_api.dart';
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,6 +19,9 @@ class TopAppBar extends StatelessWidget {
           elevation: 0.0,
           leading: IconButton(onPressed: () {
             if (leadingIcon != null) {
+              CLearDataDouble();
+              CLearDataInt();
+              CLearDataString();
               Navigator.pop(context);
             }
           }, icon: FaIcon(leadingIcon)),

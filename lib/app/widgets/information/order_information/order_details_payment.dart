@@ -14,25 +14,26 @@ class OrderDetailsPayment extends StatefulWidget {
 class _OrderDetailsPaymentState extends State<OrderDetailsPayment> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Padding(padding: EdgeInsets.all(51),
+    child: Column(
       children:  [
         const Divider(color: AppColor.primaryColor100),
         const Text('Thanh toán', style: TextStyle(
-          fontWeight: FontWeight.w600,
-          fontSize: 24
+            fontWeight: FontWeight.w600,
+            fontSize: 24
         )),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children:  const [
-          Text( 'Thanh toán', style: TextStyle(
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children:  const [
+            Text( 'Thanh toán', style: TextStyle(
               fontSize: 16,
-          )),
-          Text('Tiền mặt', style: TextStyle(
+            )),
+            Text('Tiền mặt', style: TextStyle(
               fontSize: 16,
-          )),
-        ],
-      )
+            )),
+          ],
+        )
       ],
-    );
+    ),);
   }
 }

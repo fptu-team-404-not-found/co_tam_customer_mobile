@@ -1,3 +1,4 @@
+import 'package:co_tam_customer_mobile/app/json_to_dart/booking/list_house/list_house.dart';
 import 'package:co_tam_customer_mobile/app/pages/booking/booking_main_screen.dart';
 import 'package:co_tam_customer_mobile/app/pages/booking/test.dart';
 import 'package:co_tam_customer_mobile/app/pages/notification/notification_screen.dart';
@@ -24,11 +25,14 @@ class Router {
         return MaterialPageRoute(builder: (_) => const MainScreen(selectedInit: 2,));
       case 'NotificationScreen':
         return MaterialPageRoute(builder: (_) => const NotificationScreen());
-      case 'MainBookingScreen':
-        final title = settings.arguments as TestTitle;
-        return MaterialPageRoute(builder: (_) => BookingMainScreen(title: title));
-      case 'ConfirmBookingScreen':
-        return MaterialPageRoute(builder: (_) => const BookingConfirmScreen());
+      case 'MainBookingScreen1':
+        return MaterialPageRoute(builder: (_) => const BookingMainScreen(id: 1));
+        case 'MainBookingScreen2':
+        return MaterialPageRoute(builder: (_) => const BookingMainScreen(id: 2));
+        case 'MainBookingScreen3':
+        return MaterialPageRoute(builder: (_) => const BookingMainScreen(id: 3));
+        case 'MainBookingScreen4':
+        return MaterialPageRoute(builder: (_) => const BookingMainScreen(id: 4));
       case 'VoucherMainScreen':
         return MaterialPageRoute(builder: (_) => const VoucherMainScreen());
       case 'VoucherDetailScreen':
@@ -36,7 +40,7 @@ class Router {
       case 'WalletScreen':
         return MaterialPageRoute(builder: (_) => const WalletScreen());
       case 'OrderDetailBookingScreen':
-        return MaterialPageRoute(builder: (_) => const OrderDetailBookingScreen());
+        return MaterialPageRoute(builder: (_) =>  OrderDetailBookingScreen());
       case 'OrderDetailHistoryScreen':
         return MaterialPageRoute(builder: (_) => const OrderDetailHistoryScreen());
 

@@ -18,7 +18,7 @@ class Avatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Routes.confirmBookingScreen);
+        /*Navigator.pushNamed(context, Routes.confirmBookingScreen);*/
       },
       child: CircleAvatar(
         radius: radius,

@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'history_order.dart';
+part of 'list_cus_voucher.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-HisOrderOfCus _$HisOrderOfCusFromJson(Map<String, dynamic> json) =>
-    HisOrderOfCus(
+ListCusVoucher _$ListCusVoucherFromJson(Map<String, dynamic> json) =>
+    ListCusVoucher(
       data: (json['data'] as List<dynamic>?)
           ?.map((e) => Data.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -16,9 +16,9 @@ HisOrderOfCus _$HisOrderOfCusFromJson(Map<String, dynamic> json) =>
       statusCode: json['statusCode'] as int?,
     );
 
-Map<String, dynamic> _$HisOrderOfCusToJson(HisOrderOfCus instance) =>
+Map<String, dynamic> _$ListCusVoucherToJson(ListCusVoucher instance) =>
     <String, dynamic>{
-      'data': instance.data?.map((e) => e.toJson()).toList(),
+      'data': instance.data,
       'success': instance.success,
       'message': instance.message,
       'statusCode': instance.statusCode,
@@ -26,56 +26,57 @@ Map<String, dynamic> _$HisOrderOfCusToJson(HisOrderOfCus instance) =>
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
       id: json['id'] as int?,
-      endTime: json['endTime'] == null
-          ? null
-          : DateTime.parse(json['endTime'] as String),
-      dateTime: json['dateTime'] == null
-          ? null
-          : DateTime.parse(json['dateTime'] as String),
-      subTotal: (json['subTotal'] as num?)?.toDouble(),
-      total: (json['total'] as num?)?.toDouble(),
-      houseId: json['houseId'] as int?,
-      packageId: json['packageId'] as int?,
+      isUsed: json['isUsed'] as bool?,
+      customerId: json['customerId'] as int?,
       promotionId: json['promotionId'] as int?,
-      paymentMethodId: json['paymentMethodId'] as int?,
-      orderState: json['orderState'] as int?,
-      house: json['house'] == null
+      customer: json['customer'] == null
           ? null
-          : House.fromJson(json['house'] as Map<String, dynamic>),
-      package: json['package'] == null
-          ? null
-          : Package.fromJson(json['package'] as Map<String, dynamic>),
-      paymentMethod: json['paymentMethod'] == null
-          ? null
-          : PaymentMethod.fromJson(
-              json['paymentMethod'] as Map<String, dynamic>),
+          : Customer.fromJson(json['customer'] as Map<String, dynamic>),
       promotion: json['promotion'] == null
           ? null
           : Promotion.fromJson(json['promotion'] as Map<String, dynamic>),
-      orderDetails: (json['orderDetails'] as List<dynamic>?)
-          ?.map((e) => OrderDetails.fromJson(e as Map<String, dynamic>))
-          .toList(),
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'id': instance.id,
-      'endTime': instance.endTime?.toIso8601String(),
-      'dateTime': instance.dateTime?.toIso8601String(),
-      'subTotal': instance.subTotal,
-      'total': instance.total,
-      'houseId': instance.houseId,
-      'packageId': instance.packageId,
+      'isUsed': instance.isUsed,
+      'customerId': instance.customerId,
       'promotionId': instance.promotionId,
-      'paymentMethodId': instance.paymentMethodId,
-      'orderState': instance.orderState,
-      'house': instance.house,
-      'package': instance.package,
-      'paymentMethod': instance.paymentMethod,
+      'customer': instance.customer,
       'promotion': instance.promotion,
-      'orderDetails': instance.orderDetails,
     };
 
-House _$HouseFromJson(Map<String, dynamic> json) => House(
+Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
+      id: json['id'] as int?,
+      name: json['name'] as String?,
+      phone: json['phone'] as String?,
+      dateOfBirth: json['dateOfBirth'] == null
+          ? null
+          : DateTime.parse(json['dateOfBirth'] as String),
+      email: json['email'] as String?,
+      linkFacebook: json['linkFacebook'] as String?,
+      avatar: json['avatar'] as String?,
+      eWallet: (json['eWallet'] as num?)?.toDouble(),
+      active: json['active'] as bool?,
+      houses: (json['houses'] as List<dynamic>?)
+          ?.map((e) => Houses.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'phone': instance.phone,
+      'dateOfBirth': instance.dateOfBirth?.toIso8601String(),
+      'email': instance.email,
+      'linkFacebook': instance.linkFacebook,
+      'avatar': instance.avatar,
+      'eWallet': instance.eWallet,
+      'active': instance.active,
+      'houses': instance.houses,
+    };
+
+Houses _$HousesFromJson(Map<String, dynamic> json) => Houses(
       id: json['id'] as int?,
       number: json['number'] as String?,
       active: json['active'] as bool?,
@@ -84,12 +85,13 @@ House _$HouseFromJson(Map<String, dynamic> json) => House(
       building: json['building'] == null
           ? null
           : Building.fromJson(json['building'] as Map<String, dynamic>),
-      customer: json['customer'] == null
-          ? null
-          : Customer.fromJson(json['customer'] as Map<String, dynamic>),
+      customer: json['customer'] as String?,
+      orders: (json['orders'] as List<dynamic>?)
+          ?.map((e) => Orders.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
-Map<String, dynamic> _$HouseToJson(House instance) => <String, dynamic>{
+Map<String, dynamic> _$HousesToJson(Houses instance) => <String, dynamic>{
       'id': instance.id,
       'number': instance.number,
       'active': instance.active,
@@ -97,6 +99,7 @@ Map<String, dynamic> _$HouseToJson(House instance) => <String, dynamic>{
       'buildingId': instance.buildingId,
       'building': instance.building,
       'customer': instance.customer,
+      'orders': instance.orders,
     };
 
 Building _$BuildingFromJson(Map<String, dynamic> json) => Building(
@@ -133,54 +136,55 @@ Map<String, dynamic> _$AreaToJson(Area instance) => <String, dynamic>{
       'city': instance.city,
     };
 
-Customer _$CustomerFromJson(Map<String, dynamic> json) => Customer(
+Orders _$OrdersFromJson(Map<String, dynamic> json) => Orders(
       id: json['id'] as int?,
-      name: json['name'] as String?,
-      phone: json['phone'] as String?,
-      dateOfBirth: json['dateOfBirth'] == null
+      endTime: json['endTime'] == null
           ? null
-          : DateTime.parse(json['dateOfBirth'] as String),
-      email: json['email'] as String?,
-      linkFacebook: json['linkFacebook'] as String?,
-      avatar: json['avatar'] as String?,
-      eWallet: (json['eWallet'] as num?)?.toDouble(),
-      active: json['active'] as bool?,
-      customerPromotions: (json['customerPromotions'] as List<dynamic>?)
-          ?.map((e) => CustomerPromotions.fromJson(e as Map<String, dynamic>))
+          : DateTime.parse(json['endTime'] as String),
+      dateTime: json['dateTime'] == null
+          ? null
+          : DateTime.parse(json['dateTime'] as String),
+      subTotal: (json['subTotal'] as num?)?.toDouble(),
+      total: (json['total'] as num?)?.toDouble(),
+      houseId: json['houseId'] as int?,
+      packageId: json['packageId'] as int?,
+      promotionId: json['promotionId'] as int?,
+      paymentMethodId: json['paymentMethodId'] as int?,
+      orderState: json['orderState'] as int?,
+      house: json['house'] as String?,
+      package: json['package'] == null
+          ? null
+          : Package.fromJson(json['package'] as Map<String, dynamic>),
+      paymentMethod: json['paymentMethod'] == null
+          ? null
+          : PaymentMethod.fromJson(
+              json['paymentMethod'] as Map<String, dynamic>),
+      promotion: json['promotion'] as String?,
+      orderDetails: (json['orderDetails'] as List<dynamic>?)
+          ?.map((e) => OrderDetails.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      workerInOrders: (json['workerInOrders'] as List<dynamic>?)
+          ?.map((e) => WorkerInOrders.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
+Map<String, dynamic> _$OrdersToJson(Orders instance) => <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
-      'phone': instance.phone,
-      'dateOfBirth': instance.dateOfBirth?.toIso8601String(),
-      'email': instance.email,
-      'linkFacebook': instance.linkFacebook,
-      'avatar': instance.avatar,
-      'eWallet': instance.eWallet,
-      'active': instance.active,
-      'customerPromotions': instance.customerPromotions,
-    };
-
-CustomerPromotions _$CustomerPromotionsFromJson(Map<String, dynamic> json) =>
-    CustomerPromotions(
-      id: json['id'] as int?,
-      isUsed: json['isUsed'] as bool?,
-      customerId: json['customerId'] as int?,
-      promotionId: json['promotionId'] as int?,
-      customer: json['customer'] as String?,
-      promotion: json['promotion'] as String?,
-    );
-
-Map<String, dynamic> _$CustomerPromotionsToJson(CustomerPromotions instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'isUsed': instance.isUsed,
-      'customerId': instance.customerId,
+      'endTime': instance.endTime?.toIso8601String(),
+      'dateTime': instance.dateTime?.toIso8601String(),
+      'subTotal': instance.subTotal,
+      'total': instance.total,
+      'houseId': instance.houseId,
+      'packageId': instance.packageId,
       'promotionId': instance.promotionId,
-      'customer': instance.customer,
+      'paymentMethodId': instance.paymentMethodId,
+      'orderState': instance.orderState,
+      'house': instance.house,
+      'package': instance.package,
+      'paymentMethod': instance.paymentMethod,
       'promotion': instance.promotion,
+      'orderDetails': instance.orderDetails,
+      'workerInOrders': instance.workerInOrders,
     };
 
 Package _$PackageFromJson(Map<String, dynamic> json) => Package(
@@ -259,40 +263,6 @@ Map<String, dynamic> _$PaymentMethodToJson(PaymentMethod instance) =>
       'active': instance.active,
     };
 
-Promotion _$PromotionFromJson(Map<String, dynamic> json) => Promotion(
-      id: json['id'] as int?,
-      code: json['code'] as String?,
-      description: json['description'] as String?,
-      value: (json['value'] as num?)?.toDouble(),
-      discount: (json['discount'] as num?)?.toDouble(),
-      amount: json['amount'] as int?,
-      startDate: json['startDate'] == null
-          ? null
-          : DateTime.parse(json['startDate'] as String),
-      endDate: json['endDate'] == null
-          ? null
-          : DateTime.parse(json['endDate'] as String),
-      active: json['active'] as bool?,
-      image: json['image'] as String?,
-      customerPromotions: (json['customerPromotions'] as List<dynamic>?)
-          ?.map((e) => CustomerPromotions.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$PromotionToJson(Promotion instance) => <String, dynamic>{
-      'id': instance.id,
-      'code': instance.code,
-      'description': instance.description,
-      'value': instance.value,
-      'discount': instance.discount,
-      'amount': instance.amount,
-      'startDate': instance.startDate?.toIso8601String(),
-      'endDate': instance.endDate?.toIso8601String(),
-      'active': instance.active,
-      'image': instance.image,
-      'customerPromotions': instance.customerPromotions,
-    };
-
 OrderDetails _$OrderDetailsFromJson(Map<String, dynamic> json) => OrderDetails(
       id: json['id'] as int?,
       extraServiceId: json['extraServiceId'] as int?,
@@ -310,6 +280,28 @@ Map<String, dynamic> _$OrderDetailsToJson(OrderDetails instance) =>
       'extraServiceId': instance.extraServiceId,
       'orderId': instance.orderId,
       'extraService': instance.extraService,
+      'order': instance.order,
+    };
+
+WorkerInOrders _$WorkerInOrdersFromJson(Map<String, dynamic> json) =>
+    WorkerInOrders(
+      id: json['id'] as int?,
+      houseWorkerId: json['houseWorkerId'] as int?,
+      orderId: json['orderId'] as int?,
+      rating: json['rating'] as int?,
+      houseWorker: json['houseWorker'] == null
+          ? null
+          : HouseWorker.fromJson(json['houseWorker'] as Map<String, dynamic>),
+      order: json['order'] as String?,
+    );
+
+Map<String, dynamic> _$WorkerInOrdersToJson(WorkerInOrders instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'houseWorkerId': instance.houseWorkerId,
+      'orderId': instance.orderId,
+      'rating': instance.rating,
+      'houseWorker': instance.houseWorker,
       'order': instance.order,
     };
 
@@ -403,4 +395,38 @@ Map<String, dynamic> _$WorkerTagsToJson(WorkerTags instance) =>
       'name': instance.name,
       'houseWorkerId': instance.houseWorkerId,
       'houseWorker': instance.houseWorker,
+    };
+
+Promotion _$PromotionFromJson(Map<String, dynamic> json) => Promotion(
+      id: json['id'] as int?,
+      code: json['code'] as String?,
+      description: json['description'] as String?,
+      value: (json['value'] as num?)?.toDouble(),
+      discount: (json['discount'] as num?)?.toDouble(),
+      amount: json['amount'] as int?,
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
+      active: json['active'] as bool?,
+      image: json['image'] as String?,
+      orders: (json['orders'] as List<dynamic>?)
+          ?.map((e) => Orders.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$PromotionToJson(Promotion instance) => <String, dynamic>{
+      'id': instance.id,
+      'code': instance.code,
+      'description': instance.description,
+      'value': instance.value,
+      'discount': instance.discount,
+      'amount': instance.amount,
+      'startDate': instance.startDate?.toIso8601String(),
+      'endDate': instance.endDate?.toIso8601String(),
+      'active': instance.active,
+      'image': instance.image,
+      'orders': instance.orders,
     };

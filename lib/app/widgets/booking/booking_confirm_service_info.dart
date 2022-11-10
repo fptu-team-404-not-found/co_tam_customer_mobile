@@ -6,8 +6,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class ConfirmServiceInfo extends StatefulWidget {
   final String mainServiceTitle;
   final String address;
+  final String package;
   final List<String>? extraService;
-  const ConfirmServiceInfo({Key? key, required this.mainServiceTitle, required this.address,  this.extraService}) : super(key: key);
+  const ConfirmServiceInfo({Key? key, required this.mainServiceTitle, required this.address, required this.package, this.extraService}) : super(key: key);
 
   @override
   State<ConfirmServiceInfo> createState() => _ConfirmServiceInfoState();
@@ -58,9 +59,9 @@ class _ConfirmServiceInfoState extends State<ConfirmServiceInfo> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    Padding(padding:  EdgeInsets.all(8), child: FaIcon(FontAwesomeIcons.clock, color: AppColor.primaryColor100, size: 20)),
-                    Text('1 giờ', style:  TextStyle(
+                  children: [
+                    const Padding(padding:  EdgeInsets.all(8), child: FaIcon(FontAwesomeIcons.clock, color: AppColor.primaryColor100, size: 20)),
+                    Text(widget.package, style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 12,
                         fontStyle: FontStyle.normal,
@@ -87,31 +88,39 @@ class _ConfirmServiceInfoState extends State<ConfirmServiceInfo> {
 
                     ),
                     Padding(
-                        padding: EdgeInsets.only(left: 50.0, bottom: 15),
-                      child: Text('Ủi đồ', style:  const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13,
-                          fontStyle: FontStyle.normal,
-                          color: AppColor.subColor100)
-                      )
+                        padding: const EdgeInsets.only(left: 50.0, bottom: 15),
+                        child: Text(widget.extraService![0], style:  const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 13,
+                            fontStyle: FontStyle.normal,
+                            color: AppColor.subColor100)
+                        )
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 50.0, bottom: 15),
-                      child: Text('Vệ sinh vật nuôi', style:  const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13,
-                          fontStyle: FontStyle.normal,
-                          color: AppColor.subColor100)
+                    /*Container(
+                      child: SingleChildScrollView(
+                        child: ListView.builder(
+                            itemCount: widget.extraService!.length,
+                            itemBuilder: (context, index){
+                              return Padding(
+                                  padding: const EdgeInsets.only(left: 50.0, bottom: 15),
+                                  child: Text(widget.extraService![index], style:  const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 13,
+                                      fontStyle: FontStyle.normal,
+                                      color: AppColor.subColor100)
+                                  )
+                              );
+                            }),
                       ),
-                    ),
+                    )*/
                   ],
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children:  [
-                    const Padding(padding:  EdgeInsets.all(8), child: FaIcon(FontAwesomeIcons.noteSticky, color: AppColor.primaryColor100, size: 20)),
-                    Text('Ghi chú .... ', style:  const TextStyle(
+                  children:  const[
+                     Padding(padding:  EdgeInsets.all(8), child: FaIcon(FontAwesomeIcons.noteSticky, color: AppColor.primaryColor100, size: 20)),
+                    Text('Ghi chú .... ', style:  TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 13,
                         fontStyle: FontStyle.normal,

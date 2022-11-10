@@ -1,21 +1,17 @@
 import 'package:co_tam_customer_mobile/app/widgets/appbar/top_app_bar.dart';
 import 'package:co_tam_customer_mobile/app/widgets/information/order_information/order_details_payment.dart';
-import 'package:co_tam_customer_mobile/app/widgets/information/order_information/order_loading_process_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../../widgets/button/action_button.dart';
 import '../../widgets/information/icon_text_information.dart';
-import '../../widgets/information/order_information/order_details_information_card.dart';
 import '../../widgets/information/order_information/order_details_summary.dart';
 import '../../widgets/information/order_information/order_finding_worker_state.dart';
-import '../../widgets/information/person_information_card.dart';
-import '../../widgets/state/order_status.dart';
 import '../order/order_controller.dart';
 
 class OrderDetailBookingScreen extends View {
   const OrderDetailBookingScreen({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => OrderDetailBookingScreenView();
 }
@@ -23,6 +19,7 @@ class OrderDetailBookingScreen extends View {
 class OrderDetailBookingScreenView
     extends ViewState<OrderDetailBookingScreen, OrderController> {
   OrderDetailBookingScreenView() : super(OrderController());
+
 
   @override
   Widget get view => Scaffold(

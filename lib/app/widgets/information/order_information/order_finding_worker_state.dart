@@ -2,13 +2,15 @@ import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:flutter/cupertino.dart';
 
 class OrderFindingCustomerState extends StatefulWidget {
-  const OrderFindingCustomerState({Key? key}) : super(key: key);
+   const OrderFindingCustomerState({Key? key}) : super(key: key);
 
   @override
   State<OrderFindingCustomerState> createState() => _OrderFindingCustomerStateState();
 }
 
 class _OrderFindingCustomerStateState extends State<OrderFindingCustomerState> {
+
+  _OrderFindingCustomerStateState();
   @override
   Widget build(BuildContext context) {
 
@@ -42,7 +44,7 @@ class _OrderFindingCustomerStateState extends State<OrderFindingCustomerState> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-           SizedBox(
+          const SizedBox(
              width: 260,
             child: Text('Cô Tấm đang tìm người giúp việc cho bạn, vui lòng chờ ít phút nhé <3 !' , style: TextStyle(
               fontSize: 16,

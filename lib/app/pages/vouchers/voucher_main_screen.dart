@@ -1,5 +1,6 @@
 import 'package:co_tam_customer_mobile/app/json_to_dart/voucher/list_of_voucher.dart';
 import 'package:co_tam_customer_mobile/app/pages/vouchers/voucher_detail_screen.dart';
+import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:co_tam_customer_mobile/app/widgets/vouchers/search_bar.dart';
 import 'package:co_tam_customer_mobile/app/widgets/vouchers/voucher_tag.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class _VoucherMainScreenState extends State<VoucherMainScreen> {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
                           child: CircularProgressIndicator(
-                            color: Colors.deepPurpleAccent,
+                            color: AppColor.primaryColor30,
                           ),
                         );
                       }

@@ -25,7 +25,7 @@ class _OrderBookingNoteState extends State<OrderBookingNote> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const Text("Ghi chú", style: AppText.textBlack3,),
+            const Text("Ghi Chú", style: AppText.textBlack3,),
 
             Container(
               width: 350,

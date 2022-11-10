@@ -2,12 +2,10 @@ import 'package:co_tam_customer_mobile/app/json_to_dart/user/user_info.dart';
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:co_tam_customer_mobile/app/widgets/account/account_button.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../pages/account/account_update.dart';
 import '../../pages/login/login_screen.dart';
 import '../../rest_api/rest_api.dart';
 import 'account_info_bar.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class AccountHead extends StatefulWidget {
   const AccountHead({Key? key}) : super(key: key);
@@ -29,7 +27,7 @@ class _AccountHeadState extends State<AccountHead> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
                 child: CircularProgressIndicator(
-                  color: Colors.deepPurpleAccent,
+                  color: AppColor.primaryColor30,
                 ),
               );
             }
@@ -59,10 +57,10 @@ class _AccountHeadState extends State<AccountHead> {
                                       shape: BoxShape.circle,
                                       border: Border.all(color: Colors.white, width: 8),
                                       ),
-                                  child: ClipRRect(
+                                  child:  ClipRRect(
                                     borderRadius:
-                                      const BorderRadius.all(Radius.circular(80.0)),
-                                      child: Image.network(snapshot.data!.data!.avatar == null ? 'https://i.pinimg.com/originals/5f/39/e6/5f39e6d606da1c3d603bdabfccf053f3.jpg' : snapshot.data!.data!.avatar!.toString().toString()),
+                                     const BorderRadius.all(Radius.circular(80.0)),
+                                    child: Image.network(snapshot.data!.data!.avatar!.toString().toString()),
                                   ),
                                 ),
                                 Text(
@@ -82,25 +80,25 @@ class _AccountHeadState extends State<AccountHead> {
                     thickness: 1,
                     color: AppColor.subColor30,
                   ),
-                  AccountInfoBar(textData: snapshot.data!.data!.dateOfBirth == null ? '' : snapshot.data!.data!.dateOfBirth.toString().substring(0,10), iconData: Icons.cake,),
+                  AccountInfoBar(textData: snapshot.data!.data!.dateOfBirth.toString().substring(0,10), iconData: Icons.cake,),
                   const Divider(
                     height: 8,
                     thickness: 1,
                     color: AppColor.subColor30,
                   ),
-                  AccountInfoBar(textData: snapshot.data!.data!.phone == null ? '' : snapshot.data!.data!.phone.toString(), iconData: Icons.phone,),
+                  AccountInfoBar(textData: snapshot.data!.data!.phone.toString(), iconData: Icons.phone,),
                   const Divider(
                     height: 8,
                     thickness: 1,
                     color: AppColor.subColor30,
                   ),
-                  AccountInfoBar(textData: snapshot.data!.data!.email == null ? '' : snapshot.data!.data!.email.toString(), iconData: Icons.mail,),
+                  AccountInfoBar(textData: snapshot.data!.data!.email.toString(), iconData: Icons.mail,),
                   const Divider(
                     height: 8,
                     thickness: 1,
                     color: AppColor.subColor30,
                   ),
-                  AccountInfoBar(textData: snapshot.data!.data!.eWallet == null ? '' : snapshot.data!.data!.eWallet.toString(), iconData: Icons.account_balance_wallet,),
+                  AccountInfoBar(textData: snapshot.data!.data!.eWallet.toString(), iconData: Icons.account_balance_wallet,),
                   const Divider(
                     height: 8,
                     thickness: 1,
@@ -113,23 +111,20 @@ class _AccountHeadState extends State<AccountHead> {
                     children: [
                       InkWell(
                         onTap: () {
-                          /*final dateTime = DateTime(snapshot.data!.data!.dateOfBirth!.);
-                          dateTime.format();
-                          print("time: " + dateTime.toString());*/
+
                         },
-                        child: const AccountButton(textData: "Voucher")
+                        child: const AccountButton(textData: "Ưu đãi")
                       ),
                       InkWell(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              //TODO: Chỗ này nếu update customer trống vài thông tin thì sẽ bị lỗi (Thắng tự fix giúp)
                                 builder: (context) => UpdateInfo(
-                                    name: snapshot.data!.data!.name == null ? '' : snapshot.data!.data!.name!.toString(),
-                                    phone: snapshot.data!.data!.phone == null ? '' : snapshot.data!.data!.phone!.toString(),
-                                    dateOfBirth: snapshot.data!.data!.dateOfBirth == null ? '' : snapshot.data!.data!.dateOfBirth!.toString(),
-                                    email: snapshot.data!.data!.email == null ? '' : snapshot.data!.data!.email!.toString(),
-                                    linkFacebook: snapshot.data!.data!.linkFacebook == null ? '' : snapshot.data!.data!.linkFacebook!.toString(),
-                                    avatar: snapshot.data!.data!.avatar == null ? '' : snapshot.data!.data!.avatar!.toString(),
+                                    name: snapshot.data!.data!.name!.toString(),
+                                    phone: snapshot.data!.data!.phone!.toString(),
+                                    dateOfBirth: snapshot.data!.data!.dateOfBirth!.toString(),
+                                    email: snapshot.data!.data!.email!.toString(),
+                                    linkFacebook: snapshot.data!.data!.linkFacebook!.toString(),
+                                    avatar: snapshot.data!.data!.avatar!.toString(),
                                     eWallet: snapshot.data!.data!.eWallet!,
                                     active: true
                                 )));
@@ -137,19 +132,10 @@ class _AccountHeadState extends State<AccountHead> {
                           child: const AccountButton(textData: "Cập nhật")
                       ),
                       InkWell(
-                          onTap: () async {
-                              GoogleSignIn _googleSignIn = GoogleSignIn();
-                              try {
-                                var result = await _googleSignIn.signOut();
-                                final prefs = await SharedPreferences.getInstance();
-                                await prefs.remove('accessToken');
-                                if (!mounted) return;
-                                Navigator.of(context).pushAndRemoveUntil(
-                                    MaterialPageRoute(builder: (context) => const LoginScreen()), (
-                                    route) => false);
-                              } catch (error) {
-                                print(error);
-                              }
+                          onTap: () {
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(builder: (context) => const LoginScreen()), (
+                                route) => false);
                           },
                           child: const AccountButton(textData: "Đăng xuất")
                       ),
