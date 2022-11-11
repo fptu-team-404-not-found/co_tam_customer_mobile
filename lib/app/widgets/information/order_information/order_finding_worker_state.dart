@@ -2,7 +2,8 @@ import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:flutter/cupertino.dart';
 
 class OrderFindingCustomerState extends StatefulWidget {
-   const OrderFindingCustomerState({Key? key}) : super(key: key);
+   const OrderFindingCustomerState({Key? key, required this.title}) : super(key: key);
+   final title;
 
   @override
   State<OrderFindingCustomerState> createState() => _OrderFindingCustomerStateState();
@@ -16,11 +17,11 @@ class _OrderFindingCustomerStateState extends State<OrderFindingCustomerState> {
 
     return Column(
       children: [
-        const Padding(
+        Padding(
           padding: EdgeInsets.only(left: 18.0, top: 15),
           child: Align(
             alignment: Alignment.topLeft,
-            child: Text('Dọn dẹp nhà cửa', style: TextStyle(
+            child: Text(widget.title, style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold
             )),

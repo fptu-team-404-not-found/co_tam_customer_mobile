@@ -3,8 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../rest_api/rest_api.dart';
 import '../../utils/constanst.dart';
-import '../../utils/routes.dart';
 import '../../widgets/orders/orders_tag.dart';
+import '../order_detail/order_detail_booking_screen.dart';
+import '../order_detail/order_detail_history_screen.dart';
 
 class OrderHistoryPage extends StatefulWidget {
   const OrderHistoryPage({Key? key}) : super(key: key);
@@ -54,11 +55,20 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                   itemCount: snapshot.data!.data!.length,
                   itemBuilder: (BuildContext context, int index) {
                     Data history = snapshot.data!.data![index];
-                    print("lenght: " + snapshot.data!.data!.length.toString());
                     return
                       GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, Routes.orderDetailHistoryScreen);
+                        onTap: () async {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => OrderDetailHistoryScreen(
+                                extraValue: history.subTotal! - history.package!.price!,
+                                orderState: history.orderState!,
+                                serviceID: history.package!.serviceId!,
+                                packageValue: history.package!.price!,
+                                total: history.total,
+                                voucherValue: history.promotion!.id == null ? 0 : history.promotion!.value!,
+                                paymentMethodID: history.paymentMethodId ?? 0,
+                                orderId: history.id,
+                              )));
                         },
                         child: OrderTag(
                           id: history.package!.serviceId!,
@@ -67,8 +77,8 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                           history.package!.serviceId! == 2 ? 'Khử trùng ' :
                           history.package!.serviceId! == 3 ? 'Sofa - Rèm cửa' :
                           'Thiết bị' ,
-                          startTime: history.dateTime.toString().substring(0,10) + " - "+ history.dateTime.toString().substring(11,16),
-                          endTime: '12-12-2012 - 13:00',
+                          startTime: "${history.dateTime.toString().substring(0,10)} - ${history.dateTime.toString().substring(11,16)}",
+                          endTime: "${history.endTime.toString().substring(0,10)} - ${history.endTime.toString().substring(11,16)}",
                           extraInfo: history.total.toString(),
                         ),
                       );

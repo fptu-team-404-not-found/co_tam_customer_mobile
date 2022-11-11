@@ -33,6 +33,7 @@ class Data {
   PaymentMethod? paymentMethod;
   Promotion? promotion;
   List<OrderDetails>? orderDetails;
+  List<WorkerInOrders>? workerInOrders;
 
   Data(
       {this.id,
@@ -49,7 +50,8 @@ class Data {
         this.package,
         this.paymentMethod,
         this.promotion,
-        this.orderDetails,});
+        this.orderDetails,
+        this.workerInOrders});
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
@@ -310,6 +312,28 @@ class OrderDetails {
   factory OrderDetails.fromJson(Map<String, dynamic> json) => _$OrderDetailsFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderDetailsToJson(this);
+
+}
+@JsonSerializable()
+class WorkerInOrders {
+  int? id;
+  int? houseWorkerId;
+  int? orderId;
+  int? rating;
+  HouseWorker? houseWorker;
+  String? order;
+
+  WorkerInOrders(
+      {this.id,
+        this.houseWorkerId,
+        this.orderId,
+        this.rating,
+        this.houseWorker,
+        this.order});
+
+  factory WorkerInOrders.fromJson(Map<String, dynamic> json) => _$WorkerInOrdersFromJson(json);
+
+  Map<String, dynamic> toJson() => _$WorkerInOrdersToJson(this);
 
 }
 @JsonSerializable()

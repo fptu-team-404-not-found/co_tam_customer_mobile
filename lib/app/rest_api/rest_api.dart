@@ -17,6 +17,7 @@ import '../json_to_dart/token/token.dart';
 import '../json_to_dart/user/user_info.dart';
 import '../json_to_dart/voucher/list_of_voucher.dart';
 import '../json_to_dart/voucher_not_use/voucher_not_use.dart';
+import '../json_to_dart/work_in_order/work_in_order.dart';
 
 
 
@@ -53,7 +54,6 @@ Future <ListOfVoucher> ShowAllVoucher(int pageIndex,int PageSize) async {
     },
   );
     final responseJson = jsonDecode(response.body);
-    print(responseJson.toString());
   return ListOfVoucher.fromJson(responseJson);
 }
 //Show list voucher of customer
@@ -343,4 +343,15 @@ Future<int?> GetVoucherId() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   int? id = prefs.getInt("voucherID");
   return id;
+}
+
+Future<WorkInOrder?> GetWorkInOrder(int orderID) async {
+  final response = await http.get(
+    Uri.parse('https://cotam.azurewebsites.net/api/work-in-order/orders/145'),
+    headers: {
+      HttpHeaders.contentTypeHeader: "application/json; charset=utf-8",
+    },
+  );
+  final responseJson = jsonDecode(response.body);
+  return WorkInOrder.fromJson(responseJson);
 }

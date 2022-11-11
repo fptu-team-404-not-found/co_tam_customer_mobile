@@ -4,8 +4,8 @@ import 'package:co_tam_customer_mobile/app/widgets/icon/service_icon.dart';
 import 'package:co_tam_customer_mobile/app/widgets/tag/order_booking_tag.dart';
 import 'package:flutter/material.dart';
 import '../../utils/constanst.dart';
-import '../../utils/routes.dart';
 import '../order_detail/order_detail_booking_screen.dart';
+import '../order_detail/order_detail_history_screen.dart';
 
 class OrderBookingScreen extends StatefulWidget {
   const OrderBookingScreen({Key? key}) : super(key: key);
@@ -35,7 +35,6 @@ class _OrderBookingScreenState extends State<OrderBookingScreen> {
         child: FutureBuilder<ListOrderOfCus>(
           future: ShowListOrder(),
           builder: (context, snapshot){
-            print(snapshot.toString());
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
                 child: CircularProgressIndicator(
@@ -57,14 +56,17 @@ class _OrderBookingScreenState extends State<OrderBookingScreen> {
                     itemBuilder: (BuildContext context, int index) {
                       Data order = snapshot.data!.data![index];
                       return GestureDetector(
-                        onTap: () {
-                          print("order.id!: " + order.id!.toString());
+                        onTap: () async {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => OrderDetailBookingScreen(
-                                /*id: order.id!,
-                              total: order.total!,
-                              subTotal: order.subTotal!,
-                              voucher: order.subTotal!,*/
+                              builder: (context) => OrderDetailHistoryScreen(
+                                extraValue: order.subTotal! - order.package!.price!,
+                                orderState: order.orderState!,
+                                serviceID: order.package!.serviceId!,
+                                packageValue: order.package!.price!,
+                                total: order.total,
+                                voucherValue: order.promotion!.id == null ? 0 : order.promotion!.value!,
+                                paymentMethodID: order.paymentMethodId,
+                                orderId: order.id,
                               )));
                         },
                         child: OrderBookingTag(

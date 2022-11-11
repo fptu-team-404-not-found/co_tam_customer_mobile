@@ -55,6 +55,9 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
       orderDetails: (json['orderDetails'] as List<dynamic>?)
           ?.map((e) => OrderDetails.fromJson(e as Map<String, dynamic>))
           .toList(),
+      workerInOrders: (json['workerInOrders'] as List<dynamic>?)
+          ?.map((e) => WorkerInOrders.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
@@ -73,6 +76,7 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'paymentMethod': instance.paymentMethod,
       'promotion': instance.promotion,
       'orderDetails': instance.orderDetails,
+      'workerInOrders': instance.workerInOrders,
     };
 
 House _$HouseFromJson(Map<String, dynamic> json) => House(
@@ -310,6 +314,28 @@ Map<String, dynamic> _$OrderDetailsToJson(OrderDetails instance) =>
       'extraServiceId': instance.extraServiceId,
       'orderId': instance.orderId,
       'extraService': instance.extraService,
+      'order': instance.order,
+    };
+
+WorkerInOrders _$WorkerInOrdersFromJson(Map<String, dynamic> json) =>
+    WorkerInOrders(
+      id: json['id'] as int?,
+      houseWorkerId: json['houseWorkerId'] as int?,
+      orderId: json['orderId'] as int?,
+      rating: json['rating'] as int?,
+      houseWorker: json['houseWorker'] == null
+          ? null
+          : HouseWorker.fromJson(json['houseWorker'] as Map<String, dynamic>),
+      order: json['order'] as String?,
+    );
+
+Map<String, dynamic> _$WorkerInOrdersToJson(WorkerInOrders instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'houseWorkerId': instance.houseWorkerId,
+      'orderId': instance.orderId,
+      'rating': instance.rating,
+      'houseWorker': instance.houseWorker,
       'order': instance.order,
     };
 

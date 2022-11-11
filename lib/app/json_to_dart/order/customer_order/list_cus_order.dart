@@ -313,7 +313,7 @@ class WorkerInOrders {
   int? id;
   int? houseWorkerId;
   int? orderId;
-  int? rating;
+  double? rating;
   HouseWorker? houseWorker;
   String? order;
 

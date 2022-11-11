@@ -322,7 +322,7 @@ WorkerInOrders _$WorkerInOrdersFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int?,
       houseWorkerId: json['houseWorkerId'] as int?,
       orderId: json['orderId'] as int?,
-      rating: json['rating'] as int?,
+      rating: (json['rating'] as num?)?.toDouble(),
       houseWorker: json['houseWorker'] == null
           ? null
           : HouseWorker.fromJson(json['houseWorker'] as Map<String, dynamic>),

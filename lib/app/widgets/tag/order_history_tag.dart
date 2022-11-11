@@ -21,8 +21,8 @@ class _OrderHistoryTagState extends State<OrderHistoryTag> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.pushNamed(context, Routes.orderDetailHistoryScreen);
+      onTap: (){ ////1214
+       // Navigator.pushNamed(context, Routes.orderDetailHistoryScreen);
       },
       child: Column(
         children: [
