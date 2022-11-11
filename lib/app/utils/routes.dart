@@ -7,7 +7,7 @@ class Routes {
   static const String mainBookingScreen2 = 'MainBookingScreen2';
   static const String mainBookingScreen3 = 'MainBookingScreen3';
   static const String mainBookingScreen4 = 'MainBookingScreen4';
-  /*static const String confirmBookingScreen = 'ConfirmBookingScreen';*/
+  static const String confirmBookingScreen = 'ConfirmBookingScreen';
   static const String voucherMainScreen = 'VoucherMainScreen';
   static const String voucherDetailScreen = 'VoucherDetailScreen';
   static const String walletScreen = 'WalletScreen';

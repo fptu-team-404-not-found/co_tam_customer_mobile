@@ -40,15 +40,14 @@ class _OrderRatingPageState extends State<OrderRatingPage> {
                 ),
               );
             }
+            if (snapshot.data!.data!.isEmpty) {
+              return const Center(
+                child: Text('Không có đánh giá nào chưa hoàn thành!!!', style: TextStyle(
+                    color: Colors.white, fontSize: 16
+                ),),
+              );
+            }
             if(snapshot.hasData){
-              if (snapshot.data!.data!.isEmpty) {
-                return const Center(
-                  child: Text('Không có đánh giá nào chưa hoàn thành!!!', style: TextStyle(
-                      color: Colors.white, fontSize: 16
-                  ),),
-                );
-              }
-              else {
                 int count = snapshot.data!.data!.length;
                 return ListView.builder(
                   itemCount: count,
@@ -76,7 +75,6 @@ class _OrderRatingPageState extends State<OrderRatingPage> {
                     );
                   },
                 );
-              }
             }
             return const Center(
               child: Text('Lỗi'),

@@ -1,4 +1,3 @@
-
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:co_tam_customer_mobile/app/widgets/home/home_head.dart';
 import 'package:co_tam_customer_mobile/app/widgets/home/service_icon_list.dart';
@@ -14,7 +13,7 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
   @override
   State<StatefulWidget> createState() => HomeScreenState();
-  }
+}
 
 class HomeScreenState extends State<HomeScreen> {
   final ScrollController _scrollController = ScrollController();
@@ -26,7 +25,7 @@ class HomeScreenState extends State<HomeScreen> {
           child: SizedBox(height: 230, child: HomeHead()),
         ),
         const SliverToBoxAdapter(
-          child:ServiceTitle(),
+          child: ServiceTitle(),
         ),
         const SliverToBoxAdapter(
           child: ServiceIconList(),
@@ -38,59 +37,64 @@ class HomeScreenState extends State<HomeScreen> {
           child: VoucherTitle(),
         ),
         SliverToBoxAdapter(
-          child: FutureBuilder<ListOfVoucher>(
-            future: ShowAllVoucher(1,3),
-            builder: (context, snapshot){
-              if (snapshot.connectionState == ConnectionState.waiting) {
+            child: FutureBuilder<ListOfVoucher>(
+          future: ShowAllVoucher(1, 3),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: AppColor.primaryColor30,
+                ),
+              );
+            }
+            if (snapshot.hasData) {
+              if (snapshot.data!.data!.isEmpty) {
                 return const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColor.primaryColor30,
+                  child: Text(
+                    'Không voucher để hiển thị',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 );
-              }
-              if(snapshot.hasData){
-                if (snapshot.data!.data!.isEmpty) {
-                  return const Center(
-                    child: Text('Không voucher để hiển thị', style: TextStyle(
-                        color: Colors.white, fontSize: 16
-                    ),),
-                  );
-                }
-                else {
-                  return ListView.builder(
-                    controller: _scrollController,
-                    shrinkWrap: true,
-                    itemCount: 3,
-                    itemBuilder: (BuildContext context, int index) {
-                      Data voucherDetail = snapshot.data!.data![index];
-                      return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: GestureDetector(
-                            onTap: () {Navigator.of(context).push(MaterialPageRoute(
+              } else {
+                return ListView.builder(
+                  controller: _scrollController,
+                  shrinkWrap: true,
+                  itemCount: 3,
+                  itemBuilder: (BuildContext context, int index) {
+                    Data voucherDetail = snapshot.data!.data![index];
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 10, left: 10,right: 10),
+                      child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => VoucherDetailScreen(
-                                  image: voucherDetail.image,
-                                  code: voucherDetail.code,
-                                  value: voucherDetail.value,
-                                  startDate: voucherDetail.startDate,
-                                  endDate: voucherDetail.endDate,
-                                  amount: voucherDetail.amount,
-                                  description: voucherDetail.description,
-                                )));},
-                            child: Image.network(voucherDetail.image.toString(),
-                                fit: BoxFit.fill),
-                          )
-                      );
-                    },
-                  );
-                }
-
+                                      image: voucherDetail.image,
+                                      code: voucherDetail.code,
+                                      value: voucherDetail.value,
+                                      startDate: voucherDetail.startDate,
+                                      endDate: voucherDetail.endDate,
+                                      amount: voucherDetail.amount,
+                                      description: voucherDetail.description,
+                                    )));
+                          },
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15.0),
+                            child: SizedBox(
+                              height: 220,
+                              child: Image.network(voucherDetail.image.toString(),
+                                  fit: BoxFit.fill),
+                            ),
+                          )),
+                    );
+                  },
+                );
               }
-              return const Center(
-                child: Text('Error'),
-              );
-            },
-          )
-        ),
+            }
+            return const Center(
+              child: Text('Error'),
+            );
+          },
+        )),
       ],
     );
   }

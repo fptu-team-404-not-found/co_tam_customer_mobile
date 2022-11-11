@@ -1,15 +1,17 @@
+import 'package:co_tam_customer_mobile/app/rest_api/rest_api.dart';
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/routes.dart';
 
 class HomeHead extends StatelessWidget {
 
-
   const HomeHead({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return Stack(
       children: [
         Column(
@@ -68,21 +70,29 @@ class HomeHead extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 60, left: 20),
                       child:  Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text('Cô Tấm dell chào bạn,',
+                        children:  [
+                          const Text('Cô Tấm chào bạn,',
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: Color.fromARGB(255, 224, 223, 233),
                             ),
                           ),
-                          Text('Nguyễn Đào Đức Quân',
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
+                          FutureBuilder<String?>(
+                            future: GetCustomerName(),
+                            builder: (context, snapshot) {
+                            if(snapshot.hasData){
+                              return Text( snapshot.data.toString(),
+                                style: const TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                              );
+                            }
+                            return const Text('Tên đâu rùi');
+                          },)
+
                         ],
                       )
                   )

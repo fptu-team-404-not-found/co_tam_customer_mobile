@@ -43,15 +43,14 @@ class _OrderBookingScreenState extends State<OrderBookingScreen> {
                 ),
               );
             }
+            if (snapshot.data!.data!.isEmpty) {
+              return const Center(
+                child: Text('there are no package at all!!!', style: TextStyle(
+                    color: Colors.white, fontSize: 16
+                ),),
+              );
+            }
             if(snapshot.hasData){
-              if (snapshot.data!.data!.isEmpty) {
-                return const Center(
-                  child: Text('there are no package at all!!!', style: TextStyle(
-                      color: Colors.white, fontSize: 16
-                  ),),
-                );
-              }
-              else {
                 return Padding(padding: const EdgeInsets.all(10),
                   child: ListView.builder(
                     itemCount: snapshot.data!.data!.length,
@@ -70,14 +69,14 @@ class _OrderBookingScreenState extends State<OrderBookingScreen> {
                         },
                         child: OrderBookingTag(
                             iconData: ServiceIcon(size:50, icon: Image(image:
-                            (order.package?.service?.id == 1) ? const AssetImage('assets/img/service_icons/vacuum.png') :
-                            (order.package?.service?.id == 2) ? const AssetImage('assets/img/service_icons/shield.png') :
-                            (order.package?.service?.id == 3) ? const AssetImage('assets/img/service_icons/sofa.png') :
+                            (order.package?.serviceId == 1) ? const AssetImage('assets/img/service_icons/vacuum.png') :
+                            (order.package?.serviceId == 2) ? const AssetImage('assets/img/service_icons/shield.png') :
+                            (order.package?.serviceId == 3) ? const AssetImage('assets/img/service_icons/sofa.png') :
                             const AssetImage('assets/img/service_icons/washing.png'))),
                             mainInfo:
-                            order.package?.service?.id == 1 ? 'Dọn dẹp' :
-                            order.package?.service?.id == 2 ? 'Khử trùng ' :
-                            order.package?.service?.id == 3 ? 'Sofa - Rèm cửa' :
+                            order.package?.serviceId == 1 ? 'Dọn dẹp' :
+                            order.package?.serviceId == 2 ? 'Khử trùng ' :
+                            order.package?.serviceId == 3 ? 'Sofa - Rèm cửa' :
                             'Thiết bị lạnh' ,
                             subInfo: 'Đặt lúc ${order.dateTime.toString().substring(11,16)}',
                             extraInfo:
@@ -91,8 +90,6 @@ class _OrderBookingScreenState extends State<OrderBookingScreen> {
                       );
                     },
                   ),);
-              }
-
             }
             return const Center(
               child: Text('Lỗi'),

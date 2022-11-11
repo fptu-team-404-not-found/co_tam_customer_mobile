@@ -92,7 +92,7 @@ class _BookingMainButtonState extends State<BookingMainButton> {
                               packageName: packageName,
                               extraserviceID: extraserviceID,
                               extraserviceName: extraserviceName,
-                              total: total,
+                              subtotal: total,
                             )));
                       }else{
                         Navigator.of(context).push(MaterialPageRoute(
@@ -104,7 +104,7 @@ class _BookingMainButtonState extends State<BookingMainButton> {
                               packageName: packageName,
                               extraserviceID: 0,
                               extraserviceName:  "không có dịch vụ thêm",
-                              total: total,
+                              subtotal: total,
                             )));
                       }
 

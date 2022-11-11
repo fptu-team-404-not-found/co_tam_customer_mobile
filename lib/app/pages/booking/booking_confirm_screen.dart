@@ -12,10 +12,10 @@ import '../../widgets/booking/booking_confirm_voucher.dart';
 import '../../widgets/booking/order_booking_status.dart';
 
 class BookingConfirmScreen extends StatelessWidget {
-  const BookingConfirmScreen({Key? key, required this.id, required this.houseID,required this.houseName, required this.packageID, required this.packageName, required this.extraserviceID, required this.extraserviceName, required this.total}) : super(key: key);
+  const BookingConfirmScreen({Key? key, required this.id, required this.houseID,required this.houseName, required this.packageID, required this.packageName, required this.extraserviceID, required this.extraserviceName, required this.subtotal}) : super(key: key);
   final int? houseID, packageID, extraserviceID;
   final String? houseName, packageName, extraserviceName;
-  final double? total;
+  final double? subtotal;
   final int? id ;
 
 
@@ -23,6 +23,7 @@ class BookingConfirmScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     String? title;
     String? content;
+
     return Scaffold(
       appBar: const PreferredSize(preferredSize: Size.fromHeight(56), child: TopAppBar("Confirm", FontAwesomeIcons.circleArrowLeft, null, null)),
       body: SingleChildScrollView(
@@ -47,7 +48,7 @@ class BookingConfirmScreen extends StatelessWidget {
                 thickness: 1,
                 color: AppColor.subColor30,
               ),
-              PaymentMethod(total: total),
+              PaymentMethod(total: subtotal),
               const Divider(
                 thickness: 0.5,
                 color: AppColor.primaryColor100,
@@ -62,19 +63,40 @@ class BookingConfirmScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text ('Đơn hàng:', style: TextStyle(color: Colors.black38),),
-                          Text (total.toString())
+                          Text (subtotal.toString())
                         ],
                       ),Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          Text ('Voucher:', style: TextStyle(color: Colors.black38),),
-                           Text("0")
+                        children:  [
+
+                          const Text ('Voucher:', style: TextStyle(color: Colors.black38),),
+                          FutureBuilder(
+                            future: GetVoucherPrice(),
+                            builder: (context, snapshot) {
+                              if(snapshot.hasData){
+                                return Text(snapshot.data.toString());
+                              }
+                              return const Text("0");
+                          },
+                          ),
+
                         ],
                       ),Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text ('Tổng:', style: TextStyle(color: Colors.black38),),
-                          Text ((total!).toString())
+
+                          FutureBuilder(
+                            future: GetVoucherPrice(),
+                            builder: (context, snapshot) {
+                              if(snapshot.hasData){
+                                double total1 = subtotal! - double.parse(snapshot.data.toString());
+                                return Text (total1.toString());
+                              }
+                              return  Text(subtotal.toString());
+                            },
+                          ),
+
                         ],
                       ),
                       const SizedBox(height: 30,),
@@ -88,14 +110,14 @@ class BookingConfirmScreen extends StatelessWidget {
                                 int? paymentID = prefs.getInt('paymentID');
                                 double? eWalet = prefs.getDouble('eWalet');
                                 if(paymentID == 1){
-                                  orderID = await CreateUserOrder(total, total, houseID, packageID, 5, paymentID, context);
+                                  orderID = await CreateUserOrder(subtotal, subtotal, houseID, packageID, 5, paymentID, context);
                                   if(extraserviceID != 0){
                                     UpdateOrderDetails(orderID, extraserviceID, context);
                                   }
                                 }
                                 if(paymentID == 2) {
-                                  if((eWalet! - total!) >= 0){
-                                    orderID = await CreateUserOrder(total, total, houseID, packageID, 5, paymentID, context);
+                                  if((eWalet! - subtotal!) >= 0){
+                                    orderID = await CreateUserOrder(subtotal, subtotal, houseID, packageID, 5, paymentID, context);
                                     if(extraserviceID != 0){
                                       UpdateOrderDetails(orderID, extraserviceID, context);
                                     }

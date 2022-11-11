@@ -81,9 +81,9 @@ class _RatingButtonState extends State<RatingButton> {
         content: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text(
-              'cảm ơn',
+          children: const [
+            Text(
+              'Cảm ơn',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -107,7 +107,7 @@ class _RatingButtonState extends State<RatingButton> {
                 ),
               ),
               onPressed: () {
-                UpdateRating(id,4, context);
+                UpdateRating(id,rating.toInt(), context);
                 setState((){});
                 Navigator.pop(context);
                 Navigator.pop(context);

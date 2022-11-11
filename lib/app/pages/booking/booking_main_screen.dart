@@ -8,10 +8,8 @@ import 'package:co_tam_customer_mobile/app/widgets/booking/order_booking_note.da
 import 'package:co_tam_customer_mobile/app/widgets/booking/order_booking_status.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/constanst.dart';
-import '../../widgets/button/action_button.dart';
 
 class BookingMainScreen extends StatefulWidget {
   final int id;

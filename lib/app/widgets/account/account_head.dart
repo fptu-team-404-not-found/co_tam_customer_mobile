@@ -62,7 +62,8 @@ class _AccountHeadState extends State<AccountHead> {
                                   child:  ClipRRect(
                                     borderRadius:
                                      const BorderRadius.all(Radius.circular(80.0)),
-                                    child: Image.network(snapshot.data!.data!.avatar!.toString().toString()),
+                                    child: Image.network(snapshot.data!.data!.avatar == null ? 'https://danhgiatot.cdn.vccloud.vn/wp-content/uploads/2022/10/meme-meo-cuoi-min.jpg' :
+                                        snapshot.data!.data!.avatar!.toString().toString()),
                                   ),
                                 ),
                                 Text(
@@ -82,13 +83,16 @@ class _AccountHeadState extends State<AccountHead> {
                     thickness: 1,
                     color: AppColor.subColor30,
                   ),
-                  AccountInfoBar(textData: snapshot.data!.data!.dateOfBirth.toString().substring(0,10), iconData: Icons.cake,),
+
+                  AccountInfoBar(textData: snapshot.data!.data!.dateOfBirth == null
+                      ? '' : snapshot.data!.data!.dateOfBirth.toString().substring(0,10), iconData: Icons.cake,),
                   const Divider(
                     height: 8,
                     thickness: 1,
                     color: AppColor.subColor30,
                   ),
-                  AccountInfoBar(textData: snapshot.data!.data!.phone.toString(), iconData: Icons.phone,),
+                  AccountInfoBar(textData: snapshot.data!.data!.phone == null ?
+                  '' : snapshot.data!.data!.phone.toString(), iconData: Icons.phone,),
                   const Divider(
                     height: 8,
                     thickness: 1,
@@ -121,12 +125,12 @@ class _AccountHeadState extends State<AccountHead> {
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => UpdateInfo(
-                                    name: snapshot.data!.data!.name!.toString(),
-                                    phone: snapshot.data!.data!.phone!.toString(),
-                                    dateOfBirth: snapshot.data!.data!.dateOfBirth!.toString(),
-                                    email: snapshot.data!.data!.email!.toString(),
-                                    linkFacebook: snapshot.data!.data!.linkFacebook!.toString(),
-                                    avatar: snapshot.data!.data!.avatar!.toString(),
+                                    name: snapshot.data!.data!.name == null ? '' : snapshot.data!.data!.name!.toString(),
+                                    phone: snapshot.data!.data!.phone == null ? '' : snapshot.data!.data!.phone!.toString(),
+                                    dateOfBirth: snapshot.data!.data!.dateOfBirth == null ? '' : snapshot.data!.data!.dateOfBirth!.toString(),
+                                    email: snapshot.data!.data!.email == null ? '' : snapshot.data!.data!.email!.toString(),
+                                    linkFacebook: snapshot.data!.data!.linkFacebook == null ? '' : snapshot.data!.data!.linkFacebook!.toString(),
+                                    avatar: snapshot.data!.data!.avatar == null ? '' : snapshot.data!.data!.avatar!.toString(),
                                     eWallet: snapshot.data!.data!.eWallet!,
                                     active: true
                                 )));

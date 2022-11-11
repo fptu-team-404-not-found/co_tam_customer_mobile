@@ -1,4 +1,5 @@
 import 'package:co_tam_customer_mobile/app/rest_api/rest_api.dart';
+import 'package:co_tam_customer_mobile/app/utils/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,7 +18,7 @@ class BookingConfirmVoucher extends StatefulWidget {
 class _BookingConfirmVoucherState extends State<BookingConfirmVoucher> {
   final ScrollController _scrollController = ScrollController();
   static bool isExpaded = false;
-  static String title = "hoặc nhập mã" ;
+  static String title = "Không có voucher" ;
   static int voucherID = 0;
   static double discount = 0;
   @override
@@ -56,7 +57,6 @@ class _BookingConfirmVoucherState extends State<BookingConfirmVoucher> {
                     future: ShowCusVoucherNotUse(1,10),
                     builder: (context, snapshot){
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        print(snapshot.toString());
                         return const Center(
                           child: CircularProgressIndicator(
                             color: AppColor.primaryColor30,
@@ -70,7 +70,6 @@ class _BookingConfirmVoucherState extends State<BookingConfirmVoucher> {
                         itemBuilder: (BuildContext context, int index) {
                           Data voucher = snapshot.data!.data![index];
                           String voucherText = voucher.promotion!.code!.toString();
-                          print ("voucher: " + voucherText);
                           return InkWell(
                               onTap: () async {
                                 setState(() {

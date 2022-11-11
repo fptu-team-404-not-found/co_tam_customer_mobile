@@ -18,6 +18,8 @@ import '../json_to_dart/user/user_info.dart';
 import '../json_to_dart/voucher/list_of_voucher.dart';
 import '../json_to_dart/voucher_not_use/voucher_not_use.dart';
 
+
+
 /// Auth
 Future<Token> authLogin(email, name) async {
   final response = await http.get(
@@ -56,8 +58,10 @@ Future <ListOfVoucher> ShowAllVoucher(int pageIndex,int PageSize) async {
 }
 //Show list voucher of customer
 Future <ListCusVoucher> ShowCusVoucher(int pageIndex,int PageSize) async {
+  JWT jwt = await jwtDecode();
+  int id = int.parse(jwt.id);
   final response = await http.get(
-    Uri.parse('https://cotam.azurewebsites.net/api/customer-promotions/customers/1?PageIndex=$pageIndex&PageSize=$PageSize'),
+    Uri.parse('https://cotam.azurewebsites.net/api/customer-promotions/customers/$id?PageIndex=$pageIndex&PageSize=$PageSize'),
     headers: {
       HttpHeaders.contentTypeHeader: "application/json; charset=utf-8",
     },
@@ -67,8 +71,10 @@ Future <ListCusVoucher> ShowCusVoucher(int pageIndex,int PageSize) async {
 }
 //Show list voucher of customer not use
 Future <VoucherNotUse> ShowCusVoucherNotUse(int pageIndex,int PageSize) async {
+  JWT jwt = await jwtDecode();
+  int id = int.parse(jwt.id);
   final response = await http.get(
-    Uri.parse('https://cotam.azurewebsites.net/api/customer-promotions/customers/not-used/1'),
+    Uri.parse('https://cotam.azurewebsites.net/api/customer-promotions/customers/not-used/$id'),
     headers: {
       HttpHeaders.contentTypeHeader: "application/json; accept: text/plain",
     },
@@ -81,22 +87,28 @@ Future <VoucherNotUse> ShowCusVoucherNotUse(int pageIndex,int PageSize) async {
 //Customer
 //get information of user
 Future<UserInfo> fetchInfo() async {
+  JWT jwt = await jwtDecode();
+  int id = int.parse(jwt.id);
   SharedPreferences prefs = await SharedPreferences.getInstance();
   final response = await http.get(
-    Uri.parse('https://cotam.azurewebsites.net/api/customers/1'),
+    Uri.parse('https://cotam.azurewebsites.net/api/customers/$id'),
     headers: {
       HttpHeaders.contentTypeHeader: "application/json; charset=utf-8",
     },
   );
   final responseJson = jsonDecode(response.body);
   await prefs.setDouble("eWalet" , UserInfo.fromJson(responseJson).data!.eWallet!);
+  await prefs.setString("CustomerName" , UserInfo.fromJson(responseJson).data!.name!);
   return UserInfo.fromJson(responseJson);
 }
 
 //update info
 Future updateUserInfo(name, phone, birthday, email, linkFB, avatar, eWallet,context) async {
+  JWT jwt = await jwtDecode();
+  int id = int.parse(jwt.id);
+  SharedPreferences prefs = await SharedPreferences.getInstance();
   var response = await http.put(
-      Uri.parse("https://cotam.azurewebsites.net/api/customers/1"),
+      Uri.parse("https://cotam.azurewebsites.net/api/customers/$id"),
       headers : {'Content-Type': 'application/json', 'charset': 'utf-8'},
       body:
       jsonEncode({
@@ -104,8 +116,6 @@ Future updateUserInfo(name, phone, birthday, email, linkFB, avatar, eWallet,cont
         "phone": phone,
         "dateOfBirth": birthday,
         "email": email,
-        "linkFacebook": linkFB,
-        "avatar": avatar,
         "eWallet": eWallet,
         "active": true
       })
@@ -123,8 +133,10 @@ Future updateUserInfo(name, phone, birthday, email, linkFB, avatar, eWallet,cont
 //Order
 //Show list order of customer
 Future<ListOrderOfCus> ShowListOrder() async {
+  JWT jwt = await jwtDecode();
+  int id = int.parse(jwt.id);
   final response = await http.get(
-    Uri.parse('https://cotam.azurewebsites.net/api/orders/order-pending/1'),
+    Uri.parse('https://cotam.azurewebsites.net/api/orders/order-pending/$id'),
     headers: {
       HttpHeaders.contentTypeHeader: "application/json; charset=utf-8, accept: text/plain",
     },
@@ -134,20 +146,24 @@ Future<ListOrderOfCus> ShowListOrder() async {
 }
 //Show List history of customer
 Future<HisOrderOfCus> ShowHistoryOrder() async {
+  JWT jwt = await jwtDecode();
+  int id = int.parse(jwt.id);
   final response = await http.get(
-    Uri.parse('https://cotam.azurewebsites.net/api/orders/order-history/1'),
+    Uri.parse('https://cotam.azurewebsites.net/api/orders/order-history/$id'),
     headers: {
       HttpHeaders.contentTypeHeader: "application/json; charset=utf-8",
     },
   );
   final responseJson = jsonDecode(response.body);
-  print("history: "+ responseJson.toString());
+
   return HisOrderOfCus.fromJson(responseJson);
 }
 //Show List Rating of customer
 Future<ListOfRating> ShowRating() async {
+  JWT jwt = await jwtDecode();
+  int id = int.parse(jwt.id);
   final response = await http.get(
-    Uri.parse('https://cotam.azurewebsites.net/api/work-in-order/customers/without-rating/1'),
+    Uri.parse('https://cotam.azurewebsites.net/api/work-in-order/customers/without-rating/$id'),
     headers: {
       HttpHeaders.contentTypeHeader: "application/json; charset=utf-8",
     },
@@ -207,8 +223,10 @@ Future <bool?> UpdateOrderDetails (orderID, extraServiceId ,context) async {
 //House
 //get list house o customer
 Future<HouseOfCus> ShowListHouse(int PageIndex, int PageSize) async {
+  JWT jwt = await jwtDecode();
+  int id = int.parse(jwt.id);
   final response = await http.get(
-    Uri.parse('https://cotam.azurewebsites.net/api/customers/1/houses?PageIndex=$PageIndex&PageSize=$PageSize'),
+    Uri.parse('https://cotam.azurewebsites.net/api/customers/$id/houses?PageIndex=$PageIndex&PageSize=$PageSize'),
     headers: {
       HttpHeaders.contentTypeHeader: "application/json; charset=utf-8",
     },
@@ -253,9 +271,10 @@ Future<double?> TotalPage1() async {
   double? extraservicePrice = prefs.getDouble('extraservicePrice');
   if (packagePrice == null && extraservicePrice == null) {
     Total = 0;
-  }else if (packagePrice == null && extraservicePrice != null) {
-    Total = extraservicePrice;
-  } Total = packagePrice;
+  }else
+  {
+    Total = packagePrice! + extraservicePrice!;
+  }
   return Total;
 }
 
@@ -308,4 +327,20 @@ Future<double?> GetVoucherValue() async {
   }
   return value;
 }
+//Get Cust name
+Future<String?> GetCustomerName() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? name = prefs.getString("CustomerName");
+  return name;
+}
 
+Future<double?> GetVoucherPrice() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  double? price = prefs.getDouble("vouchervalue");
+  return price;
+}
+Future<int?> GetVoucherId() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  int? id = prefs.getInt("voucherID");
+  return id;
+}

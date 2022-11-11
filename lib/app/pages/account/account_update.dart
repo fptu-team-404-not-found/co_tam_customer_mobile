@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../rest_api/rest_api.dart';
 import '../../utils/constanst.dart';
@@ -30,12 +31,13 @@ class _UpdateInfoState extends State<UpdateInfo> {
   static TextEditingController _dateBirthController = TextEditingController();
   static TextEditingController _phoneNController = TextEditingController();
   static TextEditingController _emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     _nameController = TextEditingController(text: name.toString());
     _phoneNController = TextEditingController(text: '${phone}');
     _emailController = TextEditingController(text: '${email}');
-    _dateBirthController = TextEditingController(text: dateOfBirth.toString().substring(0,10));
+    _dateBirthController = TextEditingController(text: dateOfBirth.toString() == ''? '' : dateOfBirth.toString().substring(0,10));
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -68,7 +70,7 @@ class _UpdateInfoState extends State<UpdateInfo> {
                     child: ClipRRect(
                       borderRadius:
                       const BorderRadius.all(Radius.circular(80.0)),
-                      child: Image.network(avatar.toString()),
+                      child: Image.network(avatar.toString() == '' ? 'https://danhgiatot.cdn.vccloud.vn/wp-content/uploads/2022/10/meme-meo-cuoi-min.jpg' : avatar.toString()),
                     ),
                   ),
                   SizedBox(
@@ -84,7 +86,7 @@ class _UpdateInfoState extends State<UpdateInfo> {
               ),
             ),
             FieldUpdate(title: "Họ và tên", conroller: _nameController,hintText: name.toString(),),
-            FieldUpdate(title: "Ngày sinh", conroller: _dateBirthController,hintText: dateOfBirth.toString().substring(0,10),),
+            FieldUpdate(title: "Ngày sinh", conroller: _dateBirthController,hintText: dateOfBirth.toString() == '' ? '': dateOfBirth.toString().substring(0,10),),
             FieldUpdate(title: "Điện thoại", conroller: _phoneNController,hintText: phone.toString(),),
             FieldUpdate(title: "Email", conroller: _emailController,hintText: email.toString(),),
             Row(
@@ -94,16 +96,22 @@ class _UpdateInfoState extends State<UpdateInfo> {
                   height: 50,
                   margin: const EdgeInsets.fromLTRB(0, 20, 25, 0),
                   child: ElevatedButton(
-                    onPressed: (){
+                    onPressed: () async {
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      await prefs.setString("CustomerName" , _nameController.text);
                       setState((){
                         updateUserInfo(_nameController.text, _phoneNController.text,
                             _dateBirthController.text,
                             _emailController.text, linkFacebook, avatar, eWallet, context);
                         name = _nameController.text;
                         phone = _phoneNController.text;
-                        dateOfBirth = _dateBirthController.text.substring(0,10);
+                        dateOfBirth = _dateBirthController.text == '' ? '': _dateBirthController.text.substring(0,10);
                         email = _emailController.text;
-                      });
+
+                      }
+
+
+                      );
                     },
                     child: const Text('Cập nhật', style: TextStyle(color: Colors.black),),
                     style: ButtonStyle(
