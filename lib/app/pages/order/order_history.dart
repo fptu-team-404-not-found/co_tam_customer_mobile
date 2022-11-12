@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../rest_api/rest_api.dart';
 import '../../utils/constanst.dart';
 import '../../widgets/orders/orders_tag.dart';
-import '../order_detail/order_detail_booking_screen.dart';
 import '../order_detail/order_detail_history_screen.dart';
 
 class OrderHistoryPage extends StatefulWidget {
@@ -43,7 +42,7 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
               );
             }
             if(snapshot.hasData){
-              if (snapshot.data!.data!.isEmpty) {
+              if (snapshot.data!.data!.isEmpty && snapshot.data == null) {
                 return const Center(
                   child: Text('there are no package at all!!!', style: TextStyle(
                       color: Colors.white, fontSize: 16
@@ -68,6 +67,8 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                                 voucherValue: history.promotion!.id == null ? 0 : history.promotion!.value!,
                                 paymentMethodID: history.paymentMethodId ?? 0,
                                 orderId: history.id,
+                                endTime: history.endTime.toString(),
+                                dateTime: history.dateTime.toString(),
                               )));
                         },
                         child: OrderTag(
@@ -77,8 +78,9 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
                           history.package!.serviceId! == 2 ? 'Khử trùng ' :
                           history.package!.serviceId! == 3 ? 'Sofa - Rèm cửa' :
                           'Thiết bị' ,
-                          startTime: "${history.dateTime.toString().substring(0,10)} - ${history.dateTime.toString().substring(11,16)}",
-                          endTime: "${history.endTime.toString().substring(0,10)} - ${history.endTime.toString().substring(11,16)}",
+                          startTime:
+                          "${history.dateTime == null ? ' ': history.dateTime.toString().substring(0,10)} - ${history.dateTime == null ? ' ' : history.dateTime.toString().substring(11,16)}",
+                          endTime: "${history.endTime == null ? ' ' : history.endTime.toString().substring(0,10)} - ${history.endTime == null ? ' ' : history.endTime.toString().substring(11,16)}",
                           extraInfo: history.total.toString(),
                         ),
                       );

@@ -4,7 +4,6 @@ import 'package:co_tam_customer_mobile/app/widgets/icon/service_icon.dart';
 import 'package:co_tam_customer_mobile/app/widgets/tag/order_booking_tag.dart';
 import 'package:flutter/material.dart';
 import '../../utils/constanst.dart';
-import '../order_detail/order_detail_booking_screen.dart';
 import '../order_detail/order_detail_history_screen.dart';
 
 class OrderBookingScreen extends StatefulWidget {
@@ -59,6 +58,7 @@ class _OrderBookingScreenState extends State<OrderBookingScreen> {
                         onTap: () async {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => OrderDetailHistoryScreen(
+                                dateTime: order.dateTime.toString(),
                                 extraValue: order.subTotal! - order.package!.price!,
                                 orderState: order.orderState!,
                                 serviceID: order.package!.serviceId!,
@@ -86,7 +86,7 @@ class _OrderBookingScreenState extends State<OrderBookingScreen> {
                             order.orderState == 2 ?'Đã nhận đơn' :
                             order.orderState == 3 ?'Đang đến' :
                             order.orderState == 4 ?'Đang làm việc' :
-                            order.orderState == 5 ?'Đã hoàn thành công việc' :
+                            order.orderState == 5 ?'Đã hoàn thành ' :
                             'Xác nhận hoàn thành'
                         ),
                       );

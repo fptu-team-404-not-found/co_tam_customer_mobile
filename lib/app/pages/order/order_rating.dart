@@ -64,8 +64,8 @@ class _OrderRatingPageState extends State<OrderRatingPage> {
                           rating.order!.package!.serviceId == 2 ? 'Khử trùng ' :
                           rating.order!.package!.serviceId == 3 ? 'Sofa - Rèm cửa' :
                           'Thiết bị' ,
-                          startTime: rating.order!.dateTime!.toString().substring(0,16),
-                          endTime: "15-10-2022" /*rating.order!.endTime!.toString().substring(0,16)*/,
+                          startTime: rating.order!.dateTime == null ? ' ' : rating.order!.dateTime!.toString().substring(0,16),
+                          endTime: rating.order!.endTime == null ? ' ...' : rating.order!.endTime!.toString().substring(0,16),
                           price: rating.order!.total!.toString(),),
                         Align(
                           alignment: Alignment.topRight,

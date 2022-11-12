@@ -1,9 +1,7 @@
 import 'package:co_tam_customer_mobile/app/rest_api/rest_api.dart';
 import 'package:co_tam_customer_mobile/app/utils/constanst.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../utils/routes.dart';
 
 class HomeHead extends StatelessWidget {
 
@@ -34,7 +32,7 @@ class HomeHead extends StatelessWidget {
                           width: 40,
                           child: IconButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, Routes.notificationScreen);
+
                             },
                             icon: const Icon(
                               Icons.notifications,
@@ -55,7 +53,7 @@ class HomeHead extends StatelessWidget {
                           width: 40,
                           child:  IconButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, Routes.walletScreen);
+
                             },
                             icon: const Icon(
                               Icons.account_balance_wallet,

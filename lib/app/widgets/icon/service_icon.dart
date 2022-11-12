@@ -12,17 +12,20 @@ class ServiceIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      Container(
-        width: size,
-        height: size,
-        decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: AppColor.primaryColor100),
-        child: IconButton(
-          onPressed: () {
-            actionFunction!();
-          },
-          icon: icon,
+     Container(
+          width: size,
+          height: size,
+          decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColor.primaryColor100),
+          child: IconButton(
+            onPressed: () {
+              actionFunction!();
+            },
+            icon:  ClipRRect(
+              borderRadius: BorderRadius.circular(300.0),
+              child: icon,
+          ),
         ),
       );
   }

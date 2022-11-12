@@ -6,10 +6,11 @@ import '../../state/order_status.dart';
 import '../person_information_card.dart';
 
 class OrderLoadingProcessState extends StatefulWidget {
-  const OrderLoadingProcessState({Key? key, required this.serviceID, required this.orderState, required this.startTime, required this.endTime, required this.staffName, required this.rating,  this.avatar}) : super(key: key);
+  const OrderLoadingProcessState({Key? key, required this.serviceID, required this.orderState, required this.startTime, required this.endTime, required this.staffName,  this.avatar, this.rating}) : super(key: key);
   final int? serviceID, orderState;
   final startTime, endTime, staffName, rating;
   final String? avatar;
+
 
   @override
   State<OrderLoadingProcessState> createState() => _OrderLoadingProcessStateState();
@@ -34,7 +35,7 @@ class _OrderLoadingProcessStateState extends State<OrderLoadingProcessState> {
                 fontWeight: FontWeight.bold
 
               )),
-              Text("${widget.startTime} - ..." ,style: const TextStyle(
+              Text("${widget.startTime} - ${widget.endTime}" ,style: const TextStyle(
                 fontWeight: FontWeight.w900,
                 color: AppColor.primaryColor100,
                 fontSize: 30,
@@ -49,8 +50,7 @@ class _OrderLoadingProcessStateState extends State<OrderLoadingProcessState> {
                 child: ServiceIcon(
                   title: sName[widget.serviceID!].name.toString(),
                   size: 50,
-                  icon: Image.network( widget.avatar == null ? 'https://danhgiatot.cdn.vccloud.vn/wp-content/uploads/2022/10/meme-meo-cuoi-min.jpg' :
-                  widget.avatar.toString()),
+                  icon:  Image.asset(sName[widget.serviceID!].icon.toString()),
                 ))
           ],
 
@@ -58,7 +58,8 @@ class _OrderLoadingProcessStateState extends State<OrderLoadingProcessState> {
         ),
         OrderStatus(orderState: widget.orderState!),
         const SizedBox(height: 12),
-        PersonInformationCard(staffName: widget.staffName!, rating: widget.rating!),
+        PersonInformationCard(staffName: widget.staffName!, rating: widget.rating, ava: widget.avatar == null ? 'https://danhgiatot.cdn.vccloud.vn/wp-content/uploads/2022/10/meme-meo-cuoi-min.jpg' :
+        widget.avatar.toString(),),
       ],
     );
   }

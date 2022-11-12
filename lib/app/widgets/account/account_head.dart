@@ -63,7 +63,7 @@ class _AccountHeadState extends State<AccountHead> {
                                     borderRadius:
                                      const BorderRadius.all(Radius.circular(80.0)),
                                     child: Image.network(snapshot.data!.data!.avatar == null ? 'https://danhgiatot.cdn.vccloud.vn/wp-content/uploads/2022/10/meme-meo-cuoi-min.jpg' :
-                                        snapshot.data!.data!.avatar!.toString().toString()),
+                                        snapshot.data!.data!.avatar!.toString().toString(), fit:  BoxFit.fill),
                                   ),
                                 ),
                                 Text(

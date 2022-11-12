@@ -6,9 +6,10 @@ import '../../utils/constanst.dart';
 import 'avatar.dart';
 
 class PersonInformationCard extends StatefulWidget {
-  const PersonInformationCard({Key? key, required this.staffName, required this.rating}) : super(key: key);
-  final staffName;
-  final rating;
+  const PersonInformationCard({Key? key, required this.staffName,  this.rating, required this.ava}) : super(key: key);
+  final  staffName;
+  final int? rating;
+  final String ava;
 
   @override
   State<PersonInformationCard> createState() => _PersonInformationCardState();
@@ -33,14 +34,14 @@ class _PersonInformationCardState extends State<PersonInformationCard> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const Avatar(radius: 48),
+           Avatar(radius: 48, imgUrl: widget.ava),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(padding: const EdgeInsets.all(8), child: Text(widget.staffName!, style:const TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.w600,
+                 fontWeight: FontWeight.w600,
                 color: AppColor.primaryColor100
               ))),
               Padding(padding: const EdgeInsets.all(8), child: Text('Rating: ${widget.rating}' , style: const TextStyle(
